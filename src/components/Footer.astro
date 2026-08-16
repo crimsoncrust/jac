@@ -1,0 +1,89 @@
+---
+const services = [
+  { label: 'Garage Floors', href: '/services/garage-floors' },
+  { label: 'Patios + Pool Decks', href: '/services/patios-pool-decks' },
+  { label: 'Commercial + Shops', href: '/services/commercial-floor-coatings' },
+  { label: 'Metallic Systems', href: '/services/metallic-floors' },
+];
+
+const areas = [
+  { label: 'Godley, TX', href: '/service-areas/godley-tx' },
+  { label: 'Cleburne, TX', href: '/service-areas/cleburne-tx' },
+  { label: 'Burleson, TX', href: '/service-areas/burleson-tx' },
+  { label: 'Granbury, TX', href: '/service-areas/granbury-tx' },
+  { label: 'Fort Worth, TX', href: '/service-areas/fort-worth-tx' },
+  { label: 'Greater DFW', href: '/service-areas' },
+];
+
+const nav = [
+  { label: 'Home', href: '/' },
+  { label: 'Services', href: '/services' },
+  { label: 'Gallery', href: '/gallery' },
+  { label: 'About', href: '/about' },
+  { label: 'Service Areas', href: '/service-areas' },
+  { label: 'Get a Quote', href: '/quote' },
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__top">
+      <!-- Brand column -->
+      <div>
+        <div class="footer__brand-name"><span>JAC</span> Surface Coatings</div>
+        <div class="footer__tagline">Protect &bull; Restore &bull; Transform</div>
+        <p class="footer__desc">
+          Concrete floor coatings and surface solutions for garages, patios, shops, and commercial spaces across Godley and greater DFW.
+        </p>
+        <a href="tel:8179811400" class="footer__phone">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.64A2 2 0 012 .94h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+          817-981-1400
+        </a>
+      </div>
+
+      <!-- Nav column -->
+      <div>
+        <div class="footer__col-title">Navigate</div>
+        <ul class="footer__links">
+          {nav.map(item => (
+            <li><a href={item.href} class="footer__link">{item.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Services column -->
+      <div>
+        <div class="footer__col-title">Services</div>
+        <ul class="footer__links">
+          {services.map(item => (
+            <li><a href={item.href} class="footer__link">{item.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Areas column -->
+      <div>
+        <div class="footer__col-title">Service Areas</div>
+        <ul class="footer__links">
+          {areas.map(item => (
+            <li><a href={item.href} class="footer__link">{item.label}</a></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copyright">
+        &copy; {year} JAC Surface Coatings &amp; Solutions. All rights reserved.
+      </p>
+      <div class="footer__legal">
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/accessibility">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>

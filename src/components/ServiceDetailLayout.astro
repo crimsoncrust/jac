@@ -1,0 +1,195 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface FAQ {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  title: string;
+  metaTitle?: string;
+  metaDesc?: string;
+  eyebrow: string;
+  headline: string;
+  subhead: string;
+  whoFor: string;
+  whatWeDo: string;
+  prepNote: string;
+  faqs: FAQ[];
+  relatedAreas?: string[];
+  schema?: object;
+  heroImage: string;
+  prepImage: string;
+  galleryImages: string[];
+}
+
+const {
+  title,
+  metaTitle,
+  metaDesc,
+  eyebrow,
+  headline,
+  subhead,
+  whoFor,
+  whatWeDo,
+  prepNote,
+  faqs,
+  relatedAreas = ['Godley', 'Cleburne', 'Burleson', 'Fort Worth', 'Granbury'],
+  schema,
+  heroImage,
+  prepImage,
+  galleryImages,
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+const slug = currentPath.split('/').pop();
+---
+
+<BaseLayout title={metaTitle ?? title} description={metaDesc} schema={schema}>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container page-hero__inner">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <span class="breadcrumb__item"><a href="/">Home</a></span>
+        <span class="breadcrumb__sep" aria-hidden="true">/</span>
+        <span class="breadcrumb__item"><a href="/services">Services</a></span>
+        <span class="breadcrumb__sep" aria-hidden="true">/</span>
+        <span class="breadcrumb__item" aria-current="page">{title}</span>
+      </nav>
+      <span class="text-eyebrow page-hero__eyebrow">{eyebrow}</span>
+      <h1 class="page-hero__title">{headline}</h1>
+      <p class="page-hero__sub">{subhead}</p>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top: var(--space-md);">
+        <a href="/quote" class="btn btn-primary btn-lg">Get a Free Quote</a>
+        <a href="/gallery" class="btn btn-outline btn-lg">View Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hero Image -->
+  <div style="height: 420px; background: var(--color-surface); position:relative; overflow:hidden; border-bottom: 1px solid var(--color-border);">
+    <img src={heroImage} alt={`Finished ${title.toLowerCase()} project`} style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async" />
+  </div>
+
+  <!-- Who This Is For + What JAC Does -->
+  <section class="section section-light" aria-labelledby="who-heading">
+    <div class="container">
+      <div style="display:grid; gap: var(--space-xl);" class="reveal">
+        <div style="max-width:var(--container-narrow);">
+          <div class="gold-line"></div>
+          <h2 id="who-heading" style="margin-bottom: var(--space-sm);">Who this is for</h2>
+          <p class="lead">{whoFor}</p>
+        </div>
+        <div style="max-width:var(--container-narrow);">
+          <div class="gold-line"></div>
+          <h2 style="margin-bottom: var(--space-sm);">What JAC does</h2>
+          <p class="lead">{whatWeDo}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Surface Preparation -->
+  <section class="section section-surface" style="border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);" aria-labelledby="prep-heading">
+    <div class="container">
+      <div style="display:grid; gap: var(--space-xl); align-items:center;" class="reveal">
+        <div>
+          <span class="text-eyebrow">Surface Preparation</span>
+          <div class="gold-line" style="margin-top:0.75rem;"></div>
+          <h2 id="prep-heading" style="margin-bottom: var(--space-sm);">Preparation is the work.</h2>
+          <p style="max-width: 580px;">{prepNote}</p>
+          <div style="margin-top: var(--space-lg);">
+            <div style="height:280px; border-radius: var(--radius-md); position:relative; overflow:hidden;">
+              <img src={prepImage} alt="Professional surface preparation equipment" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Finish Options Slot -->
+  <slot name="finish-options" />
+
+  <!-- Project Gallery -->
+  <section class="section section-dark" aria-labelledby="gallery-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="text-eyebrow">Project Gallery</span>
+        <h2 id="gallery-heading">Completed {title} projects.</h2>
+      </div>
+      <div class="project-gallery-grid">
+        {galleryImages.map((src, i) => (
+          <div style="aspect-ratio:4/3; background: var(--color-surface); border-radius: var(--radius-md); overflow:hidden; position:relative; cursor:pointer;" class="reveal" data-lightbox={src} data-lightbox-alt={`${title} project photo ${i + 1}`}>
+            <img src={src} alt={`${title} project photo ${i + 1}`} style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async" />
+          </div>
+        ))}
+      </div>
+      <div style="text-align:center; margin-top: var(--space-lg);">
+        <a href="/gallery" class="btn btn-outline">View Full Gallery</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-light" aria-labelledby="faq-heading">
+    <div class="container">
+      <div style="max-width: var(--container-narrow); margin-inline: auto;" class="reveal">
+        <div class="section-header">
+          <span class="text-eyebrow">Common Questions</span>
+          <h2 id="faq-heading">{title} — frequently asked questions</h2>
+        </div>
+
+        <div class="faq-list" role="list">
+          {faqs.map(faq => (
+            <div class="faq-item" role="listitem">
+              <button class="faq-question" aria-expanded="false">
+                {faq.q}
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer">{faq.a}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Area -->
+  <section class="section section-dark" aria-labelledby="areas-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="text-eyebrow">Service Coverage</span>
+        <h2 id="areas-heading">{title} across the DFW area.</h2>
+        <p>JAC installs {title.toLowerCase()} for residential and commercial customers throughout Godley, Johnson County, and the greater DFW region.</p>
+      </div>
+      <div class="location-nearby" style="margin-top: var(--space-md);">
+        {relatedAreas.map(area => (
+          <a href={`/service-areas/${area.toLowerCase().replace(/\s+/g, '-')}-tx`} class="nearby-pill">{area}, TX</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section-lg cta-section" aria-labelledby="service-cta-heading">
+    <div class="container">
+      <div class="cta-section__inner reveal">
+        <span class="text-eyebrow">Ready to Start?</span>
+        <h2 class="cta-section__title" id="service-cta-heading">Quote this system.</h2>
+        <p class="cta-section__desc">
+          Tell us about your space. JAC will follow up to discuss the surface condition, preparation requirements, and the right coating system for your project.
+        </p>
+        <div class="cta-section__actions">
+          <a href="/quote" class="btn btn-primary btn-lg">Get a Free Quote</a>
+          <span class="cta-section__divider">or</span>
+          <a href="tel:8179811400" class="btn btn-outline btn-lg">Call 817-981-1400</a>
+          <a href="sms:8179811400" class="btn btn-ghost">Text JAC →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

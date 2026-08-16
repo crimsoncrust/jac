@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface FAQ {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  city: string;
+  state: string;
+  slug: string;
+  metaTitle: string;
+  metaDesc: string;
+  intro: string;
+  bodyContent: string;
+  nearbyAreas: Array<{ name: string; slug: string }>;
+  faqs: FAQ[];
+  schema?: object;
+  localImages: string[];
+}
+
+const {
+  city,
+  state,
+  slug,
+  metaTitle,
+  metaDesc,
+  intro,
+  bodyContent,
+  nearbyAreas,
+  faqs,
+  schema,
+  localImages,
+} = Astro.props;
+
+const services = [
+  { name: 'Garage Floors', href: '/services/garage-floors' },
+  { name: 'Patios + Pool Decks', href: '/services/patios-pool-decks' },
+  { name: 'Commercial + Shops', href: '/services/commercial-floor-coatings' },
+  { name: 'Metallic Systems', href: '/services/metallic-floors' },
+];
+---
+
+<BaseLayout title={metaTitle} description={metaDesc} schema={schema}>
+
+  <section class="page-hero">
+    <div class="container page-hero__inner">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <span class="breadcrumb__item"><a href="/">Home</a></span>
+        <span class="breadcrumb__sep" aria-hidden="true">/</span>
+        <span class="breadcrumb__item"><a href="/service-areas">Service Areas</a></span>
+        <span class="breadcrumb__sep" aria-hidden="true">/</span>
+        <span class="breadcrumb__item" aria-current="page">{city}</span>
+      </nav>
+      <span class="text-eyebrow page-hero__eyebrow">Concrete Coatings in {city}, {state}</span>
+      <h1 class="page-hero__title">Concrete floor coatings<br>in {city}, {state}.</h1>
+      <p class="page-hero__sub">{intro}</p>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top: var(--space-md);">
+        <a href="/quote" class="btn btn-primary btn-lg">Get a Free Quote</a>
+        <a href="tel:8179811400" class="btn btn-outline btn-lg">Call 817-981-1400</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Available -->
+  <section class="section section-light" aria-labelledby="services-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="text-eyebrow">Services in {city}</span>
+        <h2 id="services-heading">What JAC installs in {city}.</h2>
+        <p>JAC installs concrete coating systems for residential and commercial properties throughout {city} and the surrounding area.</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--space-md);">
+        {services.map(s => (
+          <a href={s.href} class="area-card reveal" style="background: #fff; border-color: var(--color-border-light);">
+            <div class="area-card__name" style="color: var(--color-text-dark);">{s.name}</div>
+            <div class="area-card__state" style="color: var(--color-text-dark-secondary);">Available in {city}</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Content / Local Context -->
+  <section class="section section-dark" aria-labelledby="local-heading">
+    <div class="container">
+      <div style="max-width: var(--container-narrow);" class="reveal">
+        <span class="text-eyebrow">{city}, {state}</span>
+        <div class="gold-line" style="margin-top: 0.75rem;"></div>
+        <h2 id="local-heading" style="margin-bottom: var(--space-md);">Serving {city} and the surrounding area.</h2>
+        <div style="color: var(--color-text-secondary); line-height: 1.8;" set:html={bodyContent}></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects placeholder -->
+  <section class="section section-surface" style="border-block: 1px solid var(--color-border);">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="text-eyebrow">Local Projects</span>
+        <h2>Projects in the {city} area.</h2>
+        <p>A sample of JAC's completed work in and around {city}.</p>
+      </div>
+      <div class="project-gallery-grid">
+        {localImages.map((src, i) => (
+          <div style="aspect-ratio:4/3; background: var(--color-surface); border-radius: var(--radius-md); overflow:hidden; position:relative; cursor:pointer;" class="reveal" data-lightbox={src} data-lightbox-alt={`${city} project photo ${i + 1}`}>
+            <img src={src} alt={`JAC project in ${city}, ${state}`} style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-light" aria-labelledby="faq-heading">
+    <div class="container">
+      <div style="max-width: var(--container-narrow); margin-inline: auto;" class="reveal">
+        <div class="section-header">
+          <span class="text-eyebrow">Common Questions</span>
+          <h2 id="faq-heading">Concrete coatings in {city} — questions answered.</h2>
+        </div>
+
+        <div class="faq-list">
+          {faqs.map(faq => (
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                {faq.q}
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer">{faq.a}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nearby Areas -->
+  <section class="section section-dark" aria-labelledby="nearby-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="text-eyebrow">Also Serving</span>
+        <h2 id="nearby-heading">Nearby service areas.</h2>
+      </div>
+      <div class="location-nearby">
+        {nearbyAreas.map(area => (
+          <a href={`/service-areas/${area.slug}`} class="nearby-pill">{area.name}</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-lg cta-section">
+    <div class="container">
+      <div class="cta-section__inner reveal">
+        <span class="text-eyebrow">Ready to Start in {city}?</span>
+        <h2 class="cta-section__title">Get a free quote for your {city} project.</h2>
+        <p class="cta-section__desc">
+          Tell us about your space. JAC will follow up to discuss the surface condition, preparation, and appropriate coating options for your project.
+        </p>
+        <div class="cta-section__actions">
+          <a href="/quote" class="btn btn-primary btn-lg">Get a Free Quote</a>
+          <span class="cta-section__divider">or</span>
+          <a href="tel:8179811400" class="btn btn-outline btn-lg">Call 817-981-1400</a>
+          <a href="sms:8179811400" class="btn btn-ghost">Text JAC →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

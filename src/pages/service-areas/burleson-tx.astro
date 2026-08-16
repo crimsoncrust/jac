@@ -1,0 +1,40 @@
+---
+import LocationPageLayout from '../../components/LocationPageLayout.astro';
+
+const faqs = [
+  {
+    q: "Does JAC install garage floors in Burleson?",
+    a: "Yes. Garage floor coatings are one of the most common project types in the Burleson area. JAC serves Burleson for residential and commercial coating projects."
+  },
+  {
+    q: "Can you coat a patio in Burleson?",
+    a: "Patio and outdoor surface coatings are available in Burleson. Submit the quote form with details about your space and existing concrete."
+  },
+  {
+    q: "How far is Burleson from your base in Godley?",
+    a: "Burleson is a short drive from JAC's base in Godley — Burleson is a core part of our service area, not an extended reach."
+  },
+];
+---
+
+<LocationPageLayout
+  city="Burleson"
+  state="Texas"
+  slug="burleson-tx"
+  metaTitle="Concrete Floor Coatings in Burleson, TX | JAC Surface Coatings"
+  metaDesc="Professional concrete coating services in Burleson, Texas. Garage floors, patios, commercial spaces — installed with proper preparation. Local Godley-based company. Free quote."
+  intro="JAC serves Burleson and surrounding Tarrant and Johnson County communities with professional concrete coating systems for garages, patios, and commercial spaces."
+  bodyContent="<p>Burleson sits at the edge of both Johnson and Tarrant counties — close to JAC's base in Godley. We serve Burleson-area homeowners and commercial customers who need professional concrete coating without the delays that come with hiring a contractor that views Burleson as an out-of-area job.</p><p style='margin-top: 1rem;'>Common project types in the Burleson area include residential garage floors, two- and three-car garages, and patio surfaces in newer subdivisions. JAC evaluates each project individually and selects the appropriate system for the surface and intended use.</p>"
+  nearbyAreas={[
+    { name: 'Godley, TX', slug: 'godley-tx' },
+    { name: 'Cleburne, TX', slug: 'cleburne-tx' },
+    { name: 'Fort Worth, TX', slug: 'fort-worth-tx' },
+    { name: 'Granbury, TX', slug: 'granbury-tx' },
+  ]}
+  faqs={faqs}
+  localImages={[
+    '/images/areas/burleson-tx/01-project.jpg',
+    '/images/areas/burleson-tx/02-project.jpg',
+    '/images/areas/burleson-tx/03-project.jpg',
+  ]}
+/>

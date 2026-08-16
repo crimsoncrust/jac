@@ -1,0 +1,47 @@
+---
+import ServiceDetailLayout from '../../components/ServiceDetailLayout.astro';
+
+const faqs = [
+  {
+    q: "Can a commercial floor be coated while the business stays open?",
+    a: "This depends on the size of the space and how it can be sectioned. JAC will discuss the project schedule during the evaluation to minimize operational disruption where possible."
+  },
+  {
+    q: "What types of commercial spaces do you coat?",
+    a: "Service bays, auto shops, warehouses, commercial workspaces, retail back-of-house, and similar environments. The right system depends on the type of use, traffic, and any chemical exposure."
+  },
+  {
+    q: "Can coatings handle forklift or heavy equipment traffic?",
+    a: "Some systems are appropriate for heavy rolling loads. This is an important factor to discuss during the project evaluation so the correct system is selected."
+  },
+  {
+    q: "Do you work with property managers or contractors?",
+    a: "JAC works with property owners, business owners, and contractors. Contact us to discuss the project and the appropriate quoting process for your situation."
+  },
+  {
+    q: "Can chemical spills damage the coating?",
+    a: "Chemical resistance varies by system. The type and frequency of chemical exposure in your facility is an important factor in system selection — discuss specifics during the evaluation."
+  },
+];
+---
+
+<ServiceDetailLayout
+  title="Commercial + Shops"
+  metaTitle="Commercial Floor Coatings | JAC Surface Coatings — DFW, TX"
+  metaDesc="Commercial and shop floor coating systems in Godley and greater DFW. Service bays, warehouses, and workspaces — professional installation with proper surface preparation."
+  eyebrow="Commercial Floor Systems"
+  headline="Floors built for<br>what actually happens in them."
+  subhead="Durable coating solutions for service bays, shops, warehouses, and commercial workspaces. Installed for long-term performance under real working conditions."
+  whoFor="Business owners, shop operators, and commercial property owners who need a durable, professional floor surface. Appropriate for auto service bays, mechanical shops, light manufacturing, warehouses, commercial workspaces, and similar environments."
+  whatWeDo="JAC evaluates the commercial concrete substrate, reviews the intended use and traffic patterns, and selects a system appropriate for the environment. Preparation focuses on opening the concrete profile and addressing any existing contamination, damage, or previous coatings before installation."
+  prepNote="Commercial floors face different demands than residential — heavier loads, more frequent traffic, potential chemical exposure, and less tolerance for downtime. The preparation process is essential to ensure the coating performs under those conditions. JAC assesses existing contamination (oils, chemicals, previous coatings) and removes them before any new system is applied."
+  faqs={faqs}
+  heroImage="/images/services/commercial/01-hero.jpg"
+  prepImage="/images/services/commercial/02-surface-prep.jpg"
+  galleryImages={[
+    '/images/services/commercial/03-gallery-1.jpg',
+    '/images/services/commercial/04-gallery-2.jpg',
+    '/images/services/commercial/05-gallery-3.jpg',
+    '/images/services/commercial/06-gallery-4.jpg',
+  ]}
+/>

@@ -1,0 +1,419 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Get a Free Quote | JAC Surface Coatings — DFW Concrete Coating"
+  description="Request a free concrete coating quote from JAC Surface Coatings. Tell us about your garage, patio, shop, or commercial space. Serving Godley and greater DFW, Texas."
+>
+
+  <section class="page-hero" style="padding-bottom: var(--space-lg);">
+    <div class="container page-hero__inner">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <span class="breadcrumb__item"><a href="/">Home</a></span>
+        <span class="breadcrumb__sep" aria-hidden="true">/</span>
+        <span class="breadcrumb__item" aria-current="page">Get a Free Quote</span>
+      </nav>
+      <span class="text-eyebrow page-hero__eyebrow">Free Project Quote</span>
+      <h1 class="page-hero__title">Get a Free Project Quote</h1>
+      <p class="page-hero__sub">Tell us about the space. We'll follow up to confirm the site, preparation requirements, and appropriate coating options.</p>
+    </div>
+  </section>
+
+  <section class="section section-dark" style="padding-top: var(--space-lg);">
+    <div class="container">
+      <div class="quote-wizard" id="quote-wizard">
+
+        <!-- Progress Bar -->
+        <div class="quote-progress" role="progressbar" aria-label="Quote progress" aria-valuenow="1" aria-valuemin="1" aria-valuemax="5">
+          <div class="progress-step active" data-step="1">01 Space</div>
+          <div class="progress-step" data-step="2">02 Size</div>
+          <div class="progress-step" data-step="3">03 Condition</div>
+          <div class="progress-step" data-step="4">04 Style</div>
+          <div class="progress-step" data-step="5">05 Contact</div>
+        </div>
+
+        <!-- Step 1: Space Type -->
+        <div class="wizard-step active" data-step="1">
+          <h2 class="wizard-step__title">What type of space are we coating?</h2>
+          <p class="wizard-step__sub">Select the option that best describes your project.</p>
+
+          <div class="option-cards" id="space-options">
+            <button class="option-card" data-value="garage" type="button" aria-pressed="false">
+              <span class="option-card__icon" aria-hidden="true">🚗</span>
+              <span class="option-card__label">Garage</span>
+            </button>
+            <button class="option-card" data-value="patio" type="button" aria-pressed="false">
+              <span class="option-card__icon" aria-hidden="true">☀️</span>
+              <span class="option-card__label">Patio / Pool</span>
+            </button>
+            <button class="option-card" data-value="commercial" type="button" aria-pressed="false">
+              <span class="option-card__icon" aria-hidden="true">🏗️</span>
+              <span class="option-card__label">Shop / Commercial</span>
+            </button>
+            <button class="option-card" data-value="other" type="button" aria-pressed="false">
+              <span class="option-card__icon" aria-hidden="true">📐</span>
+              <span class="option-card__label">Other</span>
+            </button>
+          </div>
+
+          <div class="wizard-nav">
+            <span></span>
+            <button class="btn btn-primary" id="step1-next" type="button" disabled>Next Step →</button>
+          </div>
+        </div>
+
+        <!-- Step 2: Size -->
+        <div class="wizard-step" data-step="2">
+          <h2 class="wizard-step__title">What's the approximate size?</h2>
+          <p class="wizard-step__sub">An estimate is fine — we'll confirm during the site evaluation.</p>
+
+          <div class="form-group">
+            <label class="form-label" for="size-sqft">Approximate square footage</label>
+            <input class="form-input" type="number" id="size-sqft" placeholder="e.g. 400" min="1" />
+          </div>
+
+          <p style="text-align:center; color: var(--color-text-secondary); font-size: 0.85rem; margin-block: var(--space-sm);">— or —</p>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="size-length">Length (ft)</label>
+              <input class="form-input" type="number" id="size-length" placeholder="e.g. 20" min="1" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="size-width">Width (ft)</label>
+              <input class="form-input" type="number" id="size-width" placeholder="e.g. 20" min="1" />
+            </div>
+          </div>
+
+          <div style="margin-top: var(--space-sm);">
+            <button class="option-card" data-value="unsure" type="button" id="size-unsure" aria-pressed="false" style="flex-direction:row; width:auto; gap:0.75rem;">
+              <span class="option-card__label" style="font-size:0.85rem;">I'm not sure — I'll estimate during the call</span>
+            </button>
+          </div>
+
+          <div class="wizard-nav">
+            <button class="btn btn-ghost" type="button" id="step2-back">← Back</button>
+            <button class="btn btn-primary" type="button" id="step2-next">Next Step →</button>
+          </div>
+        </div>
+
+        <!-- Step 3: Condition -->
+        <div class="wizard-step" data-step="3">
+          <h2 class="wizard-step__title">How would you describe the current concrete?</h2>
+          <p class="wizard-step__sub">Select all that apply. JAC will assess the surface during the project evaluation.</p>
+
+          <div class="option-cards" id="condition-options">
+            <button class="option-card" data-value="new" type="button" aria-pressed="false">
+              <span class="option-card__icon" aria-hidden="true">✨</span>
+              <span class="option-card__label">New concrete</span>
+            </button>
+            <button class="option-card" data-value="existing" type="button" aria-pressed="false">
+              <span class="option-card__icon" aria-hidden="true">🏠</span>
+              <span class="option-card__label">Existing bare concrete</span>
+            </button>
+            <button class="option-card" data-value="coated" type="button" aria-pressed="false">
+              <span class="option-card__icon" aria-hidden="true">🎨</span>
+              <span class="option-card__label">Previously coated</span>
+            </button>
+            <button class="option-card" data-value="damaged" type="button" aria-pressed="false">
+              <span class="option-card__icon" aria-hidden="true">🔍</span>
+              <span class="option-card__label">Cracks / damage visible</span>
+            </button>
+            <button class="option-card" data-value="unsure" type="button" aria-pressed="false">
+              <span class="option-card__icon" aria-hidden="true">❓</span>
+              <span class="option-card__label">Not sure</span>
+            </button>
+          </div>
+
+          <div class="wizard-nav">
+            <button class="btn btn-ghost" type="button" id="step3-back">← Back</button>
+            <button class="btn btn-primary" type="button" id="step3-next">Next Step →</button>
+          </div>
+        </div>
+
+        <!-- Step 4: Style + Photos -->
+        <div class="wizard-step" data-step="4">
+          <h2 class="wizard-step__title">What look are you interested in?</h2>
+          <p class="wizard-step__sub">Choose a general direction. We'll narrow down specific options during the project discussion.</p>
+
+          <div class="option-cards" id="style-options">
+            <button class="option-card" data-value="flake" type="button" aria-pressed="false">
+              <span class="option-card__icon" aria-hidden="true">🔵</span>
+              <span class="option-card__label">Flake system</span>
+            </button>
+            <button class="option-card" data-value="metallic" type="button" aria-pressed="false">
+              <span class="option-card__icon" aria-hidden="true">✨</span>
+              <span class="option-card__label">Metallic finish</span>
+            </button>
+            <button class="option-card" data-value="solid" type="button" aria-pressed="false">
+              <span class="option-card__icon" aria-hidden="true">⬛</span>
+              <span class="option-card__label">Solid / clean finish</span>
+            </button>
+            <button class="option-card" data-value="outdoor" type="button" aria-pressed="false">
+              <span class="option-card__icon" aria-hidden="true">🏡</span>
+              <span class="option-card__label">Outdoor textured finish</span>
+            </button>
+            <button class="option-card" data-value="recommend" type="button" aria-pressed="false">
+              <span class="option-card__icon" aria-hidden="true">💡</span>
+              <span class="option-card__label">Not sure — recommend something</span>
+            </button>
+          </div>
+
+          <!-- Photo Upload -->
+          <div style="margin-top: var(--space-lg);">
+            <h3 style="font-size: 1.1rem; margin-bottom: var(--space-sm); color: var(--color-white);">Add photos of your space (optional but helpful)</h3>
+            <p style="font-size: 0.875rem; color: var(--color-text-secondary); margin-bottom: var(--space-md);">Photos of the existing concrete help JAC better understand the surface condition before the site visit.</p>
+
+            <div class="upload-area" id="upload-area" role="button" tabindex="0" aria-label="Upload photos">
+              <div class="upload-area__icon" aria-hidden="true">📷</div>
+              <div class="upload-area__text">Tap to add photos</div>
+              <div class="upload-area__sub">JPEG, PNG — up to 10 photos</div>
+            </div>
+            <input type="file" id="photo-input" accept="image/*" multiple style="display:none;" aria-label="Select photos" />
+            <div class="upload-preview" id="upload-preview"></div>
+          </div>
+
+          <div class="wizard-nav">
+            <button class="btn btn-ghost" type="button" id="step4-back">← Back</button>
+            <button class="btn btn-primary" type="button" id="step4-next">Next Step →</button>
+          </div>
+        </div>
+
+        <!-- Step 5: Contact -->
+        <div class="wizard-step" data-step="5">
+          <h2 class="wizard-step__title">How should we reach you?</h2>
+          <p class="wizard-step__sub">JAC will review your project details and follow up to discuss the surface, preparation, and options.</p>
+
+          <form id="quote-form" novalidate>
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label" for="contact-name">Name <span aria-hidden="true">*</span></label>
+                <input class="form-input" type="text" id="contact-name" name="name" required autocomplete="name" placeholder="Your name" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="contact-phone">Phone <span aria-hidden="true">*</span></label>
+                <input class="form-input" type="tel" id="contact-phone" name="phone" required autocomplete="tel" placeholder="817-555-0100" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-email">Email</label>
+              <input class="form-input" type="email" id="contact-email" name="email" autocomplete="email" placeholder="you@example.com" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-zip">Project address or ZIP code</label>
+              <input class="form-input" type="text" id="contact-zip" name="zip" autocomplete="postal-code" placeholder="City, TX or ZIP code" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-method">Preferred contact method</label>
+              <select class="form-select" id="contact-method" name="contact_method">
+                <option value="">Select one</option>
+                <option value="call">Phone call</option>
+                <option value="text">Text message</option>
+                <option value="email">Email</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-message">Anything else we should know? (optional)</label>
+              <textarea class="form-textarea" id="contact-message" name="message" rows="3" placeholder="Describe your project, timeline, or any specific concerns..."></textarea>
+            </div>
+
+            <p class="form-consent">
+              By submitting this form, you agree that JAC Surface Coatings may contact you by phone, text, or email to discuss your project. Message and data rates may apply for text messages.
+            </p>
+
+            <div class="wizard-nav" style="margin-top: var(--space-md);">
+              <button class="btn btn-ghost" type="button" id="step5-back">← Back</button>
+              <button class="btn btn-primary btn-lg" type="submit" id="quote-submit">Submit Quote Request</button>
+            </div>
+          </form>
+        </div>
+
+      </div><!-- end quote-wizard -->
+
+      <!-- Success Screen -->
+      <div class="success-screen" id="success-screen">
+        <div class="success-icon" aria-hidden="true">✅</div>
+        <h2>Thanks — we've received your project information.</h2>
+        <p>JAC will review your details and follow up to discuss the space, surface preparation, and coating options. Expect a response within 1 business day.</p>
+        <div class="success-actions">
+          <a href="tel:8179811400" class="btn btn-primary btn-lg">Call Now — 817-981-1400</a>
+          <a href="sms:8179811400" class="btn btn-outline btn-lg">Text JAC</a>
+          <a href="/" class="btn btn-ghost">Back to Home →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Trust sidebar strip -->
+  <section class="section section-surface" style="border-top: 1px solid var(--color-border);">
+    <div class="container">
+      <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--space-md);">
+        <div>
+          <div class="text-eyebrow" style="margin-bottom: 0.5rem;">What Happens Next</div>
+          <p style="font-size: 0.9rem;">JAC reviews your submission and follows up to discuss the space, confirm the surface condition, and talk through coating options. No pressure, no obligation.</p>
+        </div>
+        <div>
+          <div class="text-eyebrow" style="margin-bottom: 0.5rem;">Prefer to Call?</div>
+          <a href="tel:8179811400" style="font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; color: var(--color-gold);">817-981-1400</a>
+          <p style="font-size: 0.9rem; margin-top: 0.4rem;">Call or text — whichever works for you.</p>
+        </div>
+        <div>
+          <div class="text-eyebrow" style="margin-bottom: 0.5rem;">Service Area</div>
+          <p style="font-size: 0.9rem;">Godley · Cleburne · Burleson · Granbury · Fort Worth · Greater DFW</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<script>
+  let currentStep = 1;
+  const totalSteps = 5;
+  const formData: Record<string, string | string[]> = {};
+
+  function goToStep(step: number) {
+    if (step < 1 || step > totalSteps) return;
+
+    document.querySelectorAll('.wizard-step').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.progress-step').forEach((el, i) => {
+      el.classList.toggle('active', i + 1 === step);
+      el.classList.toggle('complete', i + 1 < step);
+    });
+
+    const target = document.querySelector(`.wizard-step[data-step="${step}"]`);
+    target?.classList.add('active');
+
+    const progressbar = document.querySelector('.quote-progress');
+    progressbar?.setAttribute('aria-valuenow', String(step));
+
+    currentStep = step;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Step 1
+  document.querySelectorAll('#space-options .option-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('#space-options .option-card').forEach(c => {
+        c.classList.remove('selected');
+        c.setAttribute('aria-pressed', 'false');
+      });
+      card.classList.add('selected');
+      card.setAttribute('aria-pressed', 'true');
+      formData.space = (card as HTMLElement).dataset.value ?? '';
+      (document.getElementById('step1-next') as HTMLButtonElement).disabled = false;
+    });
+  });
+
+  document.getElementById('step1-next')?.addEventListener('click', () => goToStep(2));
+
+  // Step 2
+  document.getElementById('step2-back')?.addEventListener('click', () => goToStep(1));
+  document.getElementById('step2-next')?.addEventListener('click', () => {
+    const sqft = (document.getElementById('size-sqft') as HTMLInputElement).value;
+    const l = (document.getElementById('size-length') as HTMLInputElement).value;
+    const w = (document.getElementById('size-width') as HTMLInputElement).value;
+    formData.size = sqft || (l && w ? `${l}x${w}ft` : 'not sure');
+    goToStep(3);
+  });
+
+  const sizeUnsure = document.getElementById('size-unsure');
+  sizeUnsure?.addEventListener('click', () => {
+    sizeUnsure.classList.toggle('selected');
+    formData.size = 'not sure';
+  });
+
+  // Step 3
+  document.querySelectorAll('#condition-options .option-card').forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('selected');
+      const pressed = card.getAttribute('aria-pressed') === 'true';
+      card.setAttribute('aria-pressed', pressed ? 'false' : 'true');
+    });
+  });
+
+  document.getElementById('step3-back')?.addEventListener('click', () => goToStep(2));
+  document.getElementById('step3-next')?.addEventListener('click', () => {
+    const selected = [...document.querySelectorAll('#condition-options .option-card.selected')]
+      .map(c => (c as HTMLElement).dataset.value ?? '');
+    formData.condition = selected;
+    goToStep(4);
+  });
+
+  // Step 4 — Style
+  document.querySelectorAll('#style-options .option-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('#style-options .option-card').forEach(c => {
+        c.classList.remove('selected');
+        c.setAttribute('aria-pressed', 'false');
+      });
+      card.classList.add('selected');
+      card.setAttribute('aria-pressed', 'true');
+      formData.style = (card as HTMLElement).dataset.value ?? '';
+    });
+  });
+
+  // Photo upload
+  const uploadArea = document.getElementById('upload-area');
+  const photoInput = document.getElementById('photo-input') as HTMLInputElement;
+  const preview = document.getElementById('upload-preview');
+
+  uploadArea?.addEventListener('click', () => photoInput.click());
+  uploadArea?.addEventListener('keydown', (e) => { if ((e as KeyboardEvent).key === 'Enter') photoInput.click(); });
+
+  photoInput?.addEventListener('change', () => {
+    if (!preview) return;
+    preview.innerHTML = '';
+    const files = photoInput.files;
+    if (!files) return;
+    const maxFiles = Math.min(files.length, 10);
+    for (let i = 0; i < maxFiles; i++) {
+      const url = URL.createObjectURL(files[i]);
+      const img = document.createElement('img');
+      img.src = url;
+      img.className = 'upload-thumb';
+      img.alt = `Uploaded photo ${i + 1}`;
+      preview.appendChild(img);
+    }
+  });
+
+  document.getElementById('step4-back')?.addEventListener('click', () => goToStep(3));
+  document.getElementById('step4-next')?.addEventListener('click', () => goToStep(5));
+
+  // Step 5 — submit
+  document.getElementById('step5-back')?.addEventListener('click', () => goToStep(4));
+
+  document.getElementById('quote-form')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = (document.getElementById('contact-name') as HTMLInputElement).value.trim();
+    const phone = (document.getElementById('contact-phone') as HTMLInputElement).value.trim();
+
+    if (!name || !phone) {
+      alert('Please provide your name and phone number.');
+      return;
+    }
+
+    formData.name = name;
+    formData.phone = phone;
+    formData.email = (document.getElementById('contact-email') as HTMLInputElement).value.trim();
+    formData.zip = (document.getElementById('contact-zip') as HTMLInputElement).value.trim();
+    formData.message = (document.getElementById('contact-message') as HTMLTextAreaElement).value.trim();
+
+    // Show success screen — wire up form submission to your backend/service before launch
+    const wizard = document.getElementById('quote-wizard');
+    const success = document.getElementById('success-screen');
+    if (wizard) wizard.style.display = 'none';
+    if (success) success.classList.add('active');
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // TODO: Submit formData to your form handler (Netlify, Formspree, custom endpoint)
+    console.log('Quote submission:', formData);
+  });
+</script>

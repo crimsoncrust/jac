@@ -1,0 +1,104 @@
+---
+const navLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Services', href: '/services' },
+  { label: 'Gallery', href: '/gallery' },
+  { label: 'About', href: '/about' },
+  { label: 'Service Areas', href: '/service-areas' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<!-- Utility Bar -->
+<div class="utility-bar">
+  <div class="container">
+    <div class="utility-bar__inner">
+      <div class="utility-bar__left">
+        <div class="utility-bar__item">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          Serving Godley + Greater DFW
+        </div>
+        <div class="utility-bar__item">
+          Professional Surface Preparation
+        </div>
+      </div>
+      <div class="utility-bar__right">
+        <div class="utility-bar__item highlight">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.64A2 2 0 012 .94h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+          <a href="tel:8179811400">Call or text 817-981-1400</a>
+        </div>
+        <div class="utility-bar__item">
+          <a href="/quote">Request a Free Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Main Header -->
+<header class="site-header">
+  <div class="container">
+    <div class="header__inner">
+      <a href="/" class="header__logo" aria-label="JAC Surface Coatings home">
+        <span class="header__logo-name"><span>JAC</span> Surface Coatings</span>
+        <span class="header__logo-tagline">Protect &bull; Restore &bull; Transform</span>
+      </a>
+
+      <nav class="header__nav" aria-label="Main navigation">
+        {navLinks.map(link => (
+          <a
+            href={link.href}
+            class={`nav__link${currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href)) ? ' active' : ''}`}
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
+
+      <div class="header__actions">
+        <a href="tel:8179811400" class="header__phone" aria-label="Call JAC">817-981-1400</a>
+        <a href="/quote" class="btn btn-primary btn-sm header__cta">Get a Free Quote</a>
+        <button class="header__menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Navigation Overlay -->
+<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div class="mobile-nav__header">
+    <a href="/" class="header__logo">
+      <span class="header__logo-name"><span>JAC</span> Surface Coatings</span>
+      <span class="header__logo-tagline">Protect &bull; Restore &bull; Transform</span>
+    </a>
+    <button class="mobile-nav__close" id="mobile-nav-close" aria-label="Close menu">&times;</button>
+  </div>
+
+  <div class="mobile-nav__links">
+    {navLinks.map(link => (
+      <a href={link.href} class="mobile-nav__link">{link.label}</a>
+    ))}
+  </div>
+
+  <div class="mobile-nav__actions">
+    <a href="/quote" class="btn btn-primary btn-lg" style="justify-content: center; text-align: center;">Get a Free Quote</a>
+    <a href="tel:8179811400" class="btn btn-outline btn-lg" style="justify-content: center; text-align: center;">Call 817-981-1400</a>
+    <a href="sms:8179811400" class="btn btn-outline btn-lg" style="justify-content: center; text-align: center;">Text JAC</a>
+  </div>
+</nav>
+
+<style>
+  .btn-sm {
+    padding: 0.65rem 1.4rem;
+  }
+</style>

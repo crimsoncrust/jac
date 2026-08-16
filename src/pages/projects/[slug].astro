@@ -1,0 +1,167 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { projects, projectImagePath } from '../../data/projects';
+
+export function getStaticPaths() {
+  return projects.map(project => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+
+const heroSrc = projectImagePath(project, '01-hero.jpg');
+const beforeSrc = projectImagePath(project, '02-before.jpg');
+const afterSrc = projectImagePath(project, '03-after.jpg');
+const galleryImages = ['04-gallery-1.jpg', '05-gallery-2.jpg', '06-gallery-3.jpg', '07-gallery-4.jpg']
+  .map(file => projectImagePath(project, file));
+---
+
+<BaseLayout
+  title={`${project.title} | JAC Surface Coatings — DFW Project Gallery`}
+  description={`Completed JAC project: ${project.title}. ${project.spaceType}. View project photos and get a free quote for a similar floor.`}
+>
+
+  <!-- Hero image -->
+  <div style="height: 500px; background: var(--color-surface); position:relative; overflow:hidden;">
+    <img src={heroSrc} alt={`${project.title} — finished floor`} style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="eager" decoding="async" />
+  </div>
+
+  <section class="section section-dark">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb" style="margin-bottom: var(--space-lg);">
+        <span class="breadcrumb__item"><a href="/">Home</a></span>
+        <span class="breadcrumb__sep" aria-hidden="true">/</span>
+        <span class="breadcrumb__item"><a href="/gallery">Gallery</a></span>
+        <span class="breadcrumb__sep" aria-hidden="true">/</span>
+        <span class="breadcrumb__item" aria-current="page">{project.title}</span>
+      </nav>
+
+      <div style="display:grid; gap: var(--space-xl); align-items:start;" class="project-layout">
+        <!-- Main content -->
+        <div>
+          <span class="text-eyebrow">Completed Project</span>
+          <h1 style="font-size: clamp(1.75rem, 4vw, 2.75rem); margin-block: 0.75rem var(--space-sm);">{project.title}</h1>
+          <div style="font-family: var(--font-head); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-gold); display:flex; align-items:center; gap:0.4rem; margin-bottom: var(--space-md);">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            {project.location}
+          </div>
+
+          <p style="font-size: 1.0625rem; line-height: 1.75; color: var(--color-text-secondary); margin-bottom: var(--space-lg);">{project.description}</p>
+
+          <!-- Before / After -->
+          <div style="margin-bottom: var(--space-xl);">
+            <h2 style="font-size: 1.25rem; margin-bottom: var(--space-md);">Before + After</h2>
+            <div class="before-after-slider" id="project-ba-slider" style="aspect-ratio: 16/9;">
+              <div class="before-after-slider__after">
+                <img src={afterSrc} alt={`${project.title} — after`} style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async" />
+              </div>
+              <div class="before-after-slider__before" id="project-ba-before">
+                <img src={beforeSrc} alt={`${project.title} — before`} style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async" />
+              </div>
+              <div class="before-after-slider__handle" id="project-ba-handle">
+                <div class="before-after-slider__btn"></div>
+              </div>
+              <div class="before-after-slider__labels">
+                <span class="ba-label">Before</span>
+                <span class="ba-label">After</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Additional gallery -->
+          <h2 style="font-size: 1.25rem; margin-bottom: var(--space-md);">Project Photos</h2>
+          <div class="project-gallery-grid">
+            {galleryImages.map((src, i) => (
+              <div style="aspect-ratio:4/3; background: var(--color-surface); border-radius: var(--radius-md); position:relative; overflow:hidden; cursor:pointer;" data-lightbox={src} data-lightbox-alt={`${project.title} photo ${i + 1}`}>
+                <img src={src} alt={`${project.title} photo ${i + 1}`} style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async" />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="project-meta-sidebar">
+          <div class="project-meta-item">
+            <div class="project-meta-label">Location</div>
+            <div class="project-meta-value">{project.location}</div>
+          </div>
+          <div class="project-meta-item">
+            <div class="project-meta-label">Space Type</div>
+            <div class="project-meta-value">{project.spaceType}</div>
+          </div>
+          <div class="project-meta-item">
+            <div class="project-meta-label">Coating System</div>
+            <div class="project-meta-value">{project.system}</div>
+          </div>
+          <div class="project-meta-item">
+            <div class="project-meta-label">Finish</div>
+            <div class="project-meta-value">{project.finish}</div>
+          </div>
+          <div style="margin-top: var(--space-sm);">
+            <a href="/quote" class="btn btn-primary" style="width:100%; justify-content:center; text-align:center;">Quote a Floor Like This</a>
+          </div>
+          <div style="margin-top: 0.75rem; text-align:center;">
+            <a href="/gallery" class="btn btn-ghost" style="font-size:0.75rem;">← Back to Gallery</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related CTA -->
+  <section class="section-lg cta-section">
+    <div class="container">
+      <div class="cta-section__inner reveal">
+        <span class="text-eyebrow">Interested in a Similar Project?</span>
+        <h2 class="cta-section__title">Get a quote for your floor.</h2>
+        <p class="cta-section__desc">Tell us about your space. JAC will follow up to discuss the surface condition, preparation requirements, and appropriate coating system.</p>
+        <div class="cta-section__actions">
+          <a href="/quote" class="btn btn-primary btn-lg">Get a Free Quote</a>
+          <span class="cta-section__divider">or</span>
+          <a href="tel:8179811400" class="btn btn-outline btn-lg">Call 817-981-1400</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .project-layout {
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 900px) {
+    .project-layout {
+      grid-template-columns: 1fr 300px;
+    }
+  }
+</style>
+
+<script>
+  const slider = document.getElementById('project-ba-slider');
+  const before = document.getElementById('project-ba-before');
+  const handle = document.getElementById('project-ba-handle');
+
+  if (slider && before && handle) {
+    let isDragging = false;
+
+    function setPosition(x: number) {
+      const rect = slider.getBoundingClientRect();
+      const pct = Math.max(0, Math.min(100, ((x - rect.left) / rect.width) * 100));
+      before.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+      handle.style.left = `${pct}%`;
+    }
+
+    slider.addEventListener('mousedown', (e) => { isDragging = true; setPosition(e.clientX); });
+    slider.addEventListener('touchstart', (e) => { isDragging = true; setPosition(e.touches[0].clientX); }, { passive: true });
+    window.addEventListener('mousemove', (e) => { if (isDragging) setPosition(e.clientX); });
+    window.addEventListener('touchmove', (e) => { if (isDragging) setPosition(e.touches[0].clientX); }, { passive: true });
+    window.addEventListener('mouseup', () => { isDragging = false; });
+    window.addEventListener('touchend', () => { isDragging = false; });
+  }
+</script>

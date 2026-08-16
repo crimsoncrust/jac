@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { projects as projectData, projectImagePath } from '../../data/projects';
+
+const filters = [
+  { label: 'All', value: 'all' },
+  { label: 'Garage Floors', value: 'garage' },
+  { label: 'Metallic', value: 'metallic' },
+  { label: 'Patios', value: 'patio' },
+  { label: 'Pool Decks', value: 'pool' },
+  { label: 'Commercial', value: 'commercial' },
+  { label: 'Shops', value: 'shop' },
+];
+
+const projects = projectData.map(p => ({
+  title: p.title,
+  type: p.spaceType,
+  category: p.category,
+  location: p.location,
+  href: `/projects/${p.slug}`,
+  img: projectImagePath(p, '01-hero.jpg'),
+}));
+---
+
+<BaseLayout
+  title="Project Gallery | JAC Surface Coatings — DFW Concrete Coatings"
+  description="Browse completed concrete coating projects from JAC Surface Coatings. Garage floors, metallic systems, patios, pool decks, and commercial floors across Godley and DFW."
+>
+
+  <section class="page-hero">
+    <div class="container page-hero__inner">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <span class="breadcrumb__item"><a href="/">Home</a></span>
+        <span class="breadcrumb__sep" aria-hidden="true">/</span>
+        <span class="breadcrumb__item" aria-current="page">Gallery</span>
+      </nav>
+      <span class="text-eyebrow page-hero__eyebrow">Completed Work</span>
+      <h1 class="page-hero__title">The finished floor<br>is the proof.</h1>
+      <p class="page-hero__sub">Browse completed projects across Godley and the greater DFW area. Garage floors, metallic systems, patios, shops, and commercial spaces.</p>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+
+      <!-- Filters -->
+      <div class="gallery-filters" role="group" aria-label="Filter by project type">
+        {filters.map((f, i) => (
+          <button
+            class={`filter-btn${i === 0 ? ' active' : ''}`}
+            data-filter={f.value}
+            aria-pressed={i === 0 ? 'true' : 'false'}
+          >
+            {f.label}
+          </button>
+        ))}
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-masonry" id="gallery-grid">
+        {projects.map(project => (
+          <a
+            href={project.href}
+            class="gallery-item reveal"
+            data-category={project.category}
+            aria-label={`${project.title} — ${project.type} in ${project.location}`}
+          >
+            <div style="aspect-ratio: 4/3; background: var(--color-surface); position:relative; overflow:hidden;">
+              <img src={project.img} alt={`${project.title} — ${project.type}`} style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async" />
+            </div>
+            <div class="gallery-item__overlay">
+              <div class="gallery-item__type">{project.type}</div>
+              <div class="gallery-item__title">{project.title}</div>
+              <div style="font-size:0.75rem; color: var(--color-silver); margin-top:2px;">{project.location}</div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <p style="text-align:center; color: var(--color-text-secondary); font-size: 0.875rem; margin-top: var(--space-xl);">
+        Project titles and locations shown above are placeholders pending confirmed project details.
+      </p>
+
+      <div style="text-align:center; margin-top: var(--space-lg);">
+        <a href="/quote" class="btn btn-primary btn-lg">Get a Free Quote</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('.gallery-item');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+
+      const filter = (btn as HTMLElement).dataset.filter ?? 'all';
+
+      items.forEach(item => {
+        const category = (item as HTMLElement).dataset.category ?? '';
+        const show = filter === 'all' || category === filter;
+        (item as HTMLElement).style.display = show ? 'block' : 'none';
+      });
+    });
+  });
+</script>

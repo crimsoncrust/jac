@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const services = [
+  {
+    name: 'Garage Floors',
+    slug: 'garage-floors',
+    desc: 'Flake and coating systems designed for everyday traffic, vehicle tires, durability, and easy cleanup. Built to handle real garage use for years.',
+    img: '/images/services/garage/01-hero.jpg',
+  },
+  {
+    name: 'Patios + Pool Decks',
+    slug: 'patios-pool-decks',
+    desc: 'Outdoor surface systems focused on durability, appearance, traction, and long-term performance in sun, rain, and heavy foot traffic.',
+    img: '/images/services/patios/01-hero.jpg',
+  },
+  {
+    name: 'Commercial + Shops',
+    slug: 'commercial-floor-coatings',
+    desc: 'Durable floor coating solutions for service bays, shops, workspaces, facilities, and commercial environments that demand heavy daily use.',
+    img: '/images/services/commercial/01-hero.jpg',
+  },
+  {
+    name: 'Metallic Systems',
+    slug: 'metallic-floors',
+    desc: 'Premium decorative floors with depth, movement, and distinctive visual character. Each installation produces a one-of-a-kind result.',
+    img: '/images/services/metallic/01-hero.jpg',
+  },
+];
+---
+
+<BaseLayout
+  title="Concrete Coating Services | JAC Surface Coatings DFW"
+  description="Garage floors, patios, pool decks, commercial spaces, and metallic systems. Professional concrete coating services across Godley and greater DFW, Texas."
+>
+
+  <section class="page-hero">
+    <div class="container page-hero__inner">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <span class="breadcrumb__item"><a href="/">Home</a></span>
+        <span class="breadcrumb__sep" aria-hidden="true">/</span>
+        <span class="breadcrumb__item" aria-current="page">Services</span>
+      </nav>
+      <span class="text-eyebrow page-hero__eyebrow">What We Install</span>
+      <h1 class="page-hero__title">Choose the right system —<br>not just a color.</h1>
+      <p class="page-hero__sub">Surfacing systems for every space. JAC selects the appropriate system for each project based on the space, substrate condition, and how the floor will be used.</p>
+      <a href="/quote" class="btn btn-primary btn-lg">Get a Free Quote</a>
+    </div>
+  </section>
+
+  <section class="section section-lg section-dark">
+    <div class="container">
+      <div class="services-grid">
+        {services.map(service => (
+          <article class="service-card reveal">
+            <div class="service-card__image">
+              <img src={service.img} alt={`Finished ${service.name.toLowerCase()} project`} loading="lazy" decoding="async" />
+            </div>
+            <div class="service-card__body">
+              <h2 class="service-card__name">{service.name}</h2>
+              <p class="service-card__desc">{service.desc}</p>
+              <div class="service-card__cta">
+                <a href={`/services/${service.slug}`} class="btn btn-ghost">Explore {service.name}</a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Prep CTA Banner -->
+  <section class="section section-surface" style="border-top: 1px solid var(--color-border);">
+    <div class="container">
+      <div style="display:grid; gap: var(--space-lg); align-items:center;" class="reveal">
+        <div style="max-width: 620px;">
+          <span class="text-eyebrow">Every Project Starts Here</span>
+          <h2 style="margin-top: 0.75rem; margin-bottom: var(--space-sm);">Surface preparation is not optional.</h2>
+          <p>The finished floor is only as durable as the surface beneath it. JAC uses mechanical preparation equipment to open the concrete profile and ensure every coating system bonds correctly — not just looks good on day one.</p>
+        </div>
+        <div style="display:flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="/quote" class="btn btn-primary btn-lg">Get a Free Quote</a>
+          <a href="/about" class="btn btn-outline btn-lg">See Our Process</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

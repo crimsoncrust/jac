@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const areas = [
+  {
+    name: 'Godley',
+    state: 'Texas',
+    slug: 'godley-tx',
+    desc: 'JAC is based in Godley. Residential and commercial concrete coating for Johnson County homeowners, shop owners, and property managers.',
+    img: '/images/areas/godley-tx/01-project.jpg',
+  },
+  {
+    name: 'Cleburne',
+    state: 'Texas',
+    slug: 'cleburne-tx',
+    desc: 'Concrete floor coatings for Cleburne-area homes, garages, shops, and commercial spaces.',
+    img: '/images/areas/cleburne-tx/01-project.jpg',
+  },
+  {
+    name: 'Burleson',
+    state: 'Texas',
+    slug: 'burleson-tx',
+    desc: 'Serving Burleson and surrounding communities with professional garage floors, patios, and commercial coatings.',
+    img: '/images/areas/burleson-tx/01-project.jpg',
+  },
+  {
+    name: 'Granbury',
+    state: 'Texas',
+    slug: 'granbury-tx',
+    desc: 'Professional surface coatings for Granbury and Hood County residential and commercial projects.',
+    img: '/images/areas/granbury-tx/01-project.jpg',
+  },
+  {
+    name: 'Fort Worth',
+    state: 'Texas',
+    slug: 'fort-worth-tx',
+    desc: 'JAC serves the Fort Worth area with garage floor coatings, metallic systems, commercial floors, and more.',
+    img: '/images/areas/fort-worth-tx/01-project.jpg',
+  },
+  {
+    name: 'Greater DFW',
+    state: 'Texas',
+    slug: 'greater-dfw',
+    desc: 'Coverage across the DFW Metroplex. Not sure if we serve your area? Call or text — 817-981-1400.',
+    img: '/images/hero/01-hero-home.jpg',
+  },
+];
+---
+
+<BaseLayout
+  title="Service Areas | JAC Surface Coatings — Godley + Greater DFW, TX"
+  description="JAC Surface Coatings serves Godley, Cleburne, Burleson, Granbury, Fort Worth, and the greater DFW area. Professional concrete floor coatings for residential and commercial spaces."
+>
+
+  <section class="page-hero">
+    <div class="container page-hero__inner">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <span class="breadcrumb__item"><a href="/">Home</a></span>
+        <span class="breadcrumb__sep" aria-hidden="true">/</span>
+        <span class="breadcrumb__item" aria-current="page">Service Areas</span>
+      </nav>
+      <span class="text-eyebrow page-hero__eyebrow">Coverage Area</span>
+      <h1 class="page-hero__title">Serving Godley and<br>greater DFW.</h1>
+      <p class="page-hero__sub">JAC is based in Godley, Texas and serves residential and commercial customers throughout Johnson County, Tarrant County, and the greater DFW metroplex. Not sure if we cover your area? Give us a call.</p>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top: var(--space-md);">
+        <a href="/quote" class="btn btn-primary btn-lg">Get a Free Quote</a>
+        <a href="tel:8179811400" class="btn btn-outline btn-lg">Call 817-981-1400</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="services-grid">
+        {areas.map(area => (
+          <a href={`/service-areas/${area.slug}`} class="service-card reveal" style="text-decoration:none;">
+            <div class="service-card__image" style="aspect-ratio: 3/1; min-height: 80px;">
+              <img src={area.img} alt={`JAC project in ${area.name}, Texas`} loading="lazy" decoding="async" />
+            </div>
+            <div class="service-card__body">
+              <h2 class="service-card__name">{area.name}</h2>
+              <p style="font-size: 0.75rem; font-family: var(--font-head); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-gold); margin-bottom: 0.5rem;">{area.state}</p>
+              <p class="service-card__desc">{area.desc}</p>
+              <div class="service-card__cta" style="margin-top: auto;">
+                <span class="btn btn-ghost">View {area.name} →</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-lg cta-section">
+    <div class="container">
+      <div class="cta-section__inner reveal">
+        <span class="text-eyebrow">Not Sure We Cover You?</span>
+        <h2 class="cta-section__title">Just ask.</h2>
+        <p class="cta-section__desc">
+          JAC's coverage may extend beyond the cities listed above. Call or text 817-981-1400 and we'll let you know if your area is within range.
+        </p>
+        <div class="cta-section__actions">
+          <a href="tel:8179811400" class="btn btn-primary btn-lg">Call 817-981-1400</a>
+          <a href="sms:8179811400" class="btn btn-outline btn-lg">Text JAC</a>
+          <a href="/quote" class="btn btn-ghost">Request a Quote →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

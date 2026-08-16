@@ -1,0 +1,67 @@
+---
+import LocationPageLayout from '../../components/LocationPageLayout.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Concrete Floor Coatings in Godley, TX",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "JAC Surface Coatings & Solutions",
+    "telephone": "+18179811400",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Godley",
+      "addressRegion": "TX",
+      "addressCountry": "US"
+    }
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Godley",
+    "addressRegion": "TX"
+  }
+};
+
+const faqs = [
+  {
+    q: "Is JAC based in Godley?",
+    a: "Yes — JAC Surface Coatings is based in Godley, Texas. We serve Godley and surrounding Johnson County communities as our primary local market."
+  },
+  {
+    q: "What types of concrete surfaces do you coat in Godley?",
+    a: "JAC installs coating systems on garage floors, shop floors, patios, pool decks, and commercial spaces for Godley-area residential and commercial customers."
+  },
+  {
+    q: "Do you work on acreage properties and rural Godley homes?",
+    a: "Yes. Many Godley-area properties include detached garages, shops, barndominiums, and outdoor slabs. These are common project types for JAC in the area."
+  },
+  {
+    q: "How do I get a quote for a Godley project?",
+    a: "Submit the quote form on this site with details about your space and a few photos of the existing concrete. JAC will follow up to discuss the project."
+  },
+];
+---
+
+<LocationPageLayout
+  city="Godley"
+  state="Texas"
+  slug="godley-tx"
+  metaTitle="Concrete Floor Coatings in Godley, TX | JAC Surface Coatings"
+  metaDesc="Professional concrete coating services in Godley, Texas. Garage floors, shop floors, patios, and commercial coatings installed with proper surface preparation. Based locally — free quote."
+  intro="JAC is based in Godley, Texas — serving Johnson County homeowners, shop owners, and commercial customers with professional concrete floor coatings."
+  bodyContent="<p>JAC Surface Coatings operates out of Godley, which means fast response times, direct communication, and no subcontracting to crews from across the metro. When you hire JAC in Godley, you're working directly with the people who show up and do the work.</p><p style='margin-top: 1rem;'>Godley-area properties commonly include large garage slabs, detached shops, barndominiums, and outdoor patios — all common project types for JAC. Whether it's a two-car garage or a full workshop, the evaluation and preparation process stays the same.</p><p style='margin-top: 1rem;'>JAC serves all of Godley and surrounding Johnson County communities including Cleburne, Burleson, Joshua, Alvarado, and Grandview.</p>"
+  nearbyAreas={[
+    { name: 'Cleburne, TX', slug: 'cleburne-tx' },
+    { name: 'Burleson, TX', slug: 'burleson-tx' },
+    { name: 'Granbury, TX', slug: 'granbury-tx' },
+    { name: 'Fort Worth, TX', slug: 'fort-worth-tx' },
+  ]}
+  faqs={faqs}
+  schema={schema}
+  localImages={[
+    '/images/areas/godley-tx/01-project.jpg',
+    '/images/areas/godley-tx/02-project.jpg',
+    '/images/areas/godley-tx/03-project.jpg',
+  ]}
+/>

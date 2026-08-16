@@ -1,0 +1,51 @@
+---
+import ServiceDetailLayout from '../../components/ServiceDetailLayout.astro';
+
+const faqs = [
+  {
+    q: "How long does a garage floor coating last?",
+    a: "Durability depends on the coating system used, how well the surface was prepared, and how the floor is used. JAC selects systems appropriate for your environment and installs them with proper mechanical preparation — the two biggest factors in long-term performance."
+  },
+  {
+    q: "Can you coat a garage floor with cracks?",
+    a: "Many cracks can be addressed before installation. JAC evaluates the existing concrete condition during the quoting process. The appropriate action depends on the type, width, and cause of the cracks."
+  },
+  {
+    q: "Can I drive on it right after installation?",
+    a: "Return-to-service times vary by system and conditions. JAC will explain the specific timeline for your project after the coating system is selected."
+  },
+  {
+    q: "Will the floor be slippery?",
+    a: "Non-slip additives can be incorporated into the topcoat. Discuss your preference and use case during the quoting process so the right finish is specified."
+  },
+  {
+    q: "Do you coat the walls or base trim too?",
+    a: "JAC's primary focus is the floor surface. Ask about any adjacent surface needs during the quoting process and those specifics can be addressed."
+  },
+  {
+    q: "What finishes are available?",
+    a: "Flake systems, solid color systems, and other options are available depending on the project. Review the options with JAC during your project evaluation — the best finish depends on the space and your goals."
+  },
+];
+---
+
+<ServiceDetailLayout
+  title="Garage Floors"
+  metaTitle="Garage Floor Coatings | JAC Surface Coatings — Godley & DFW, TX"
+  metaDesc="Professional garage floor coatings in Godley, Fort Worth, and greater DFW. Flake systems, solid coatings, and more — installed with professional surface preparation. Free quote."
+  eyebrow="Garage Floor Coatings"
+  headline="A garage floor that actually holds up."
+  subhead="Flake and coating systems designed for vehicle traffic, spills, and daily use. Installed with the surface preparation that makes them last."
+  whoFor="Homeowners who want a clean, durable garage floor that holds up to vehicles, oil, chemicals, and everyday use without peeling, flaking, or staining. Also appropriate for detached garages, carports, workshops, and collector spaces."
+  whatWeDo="JAC evaluates the existing concrete, performs mechanical surface preparation using professional grinding equipment, addresses visible defects, and installs the appropriate coating system for the space and intended use. The goal is a floor that performs well for years — not just one that looks good the day it's finished."
+  prepNote="Garage floors take on vehicle traffic, oil drips, tire wear, chemicals, and temperature swings. A coating applied to unprepared or improperly prepared concrete will fail prematurely regardless of the product used. JAC uses diamond grinding to open the concrete profile and ensure the coating bonds properly before installation begins."
+  faqs={faqs}
+  heroImage="/images/services/garage/01-hero.jpg"
+  prepImage="/images/services/garage/02-surface-prep.jpg"
+  galleryImages={[
+    '/images/services/garage/03-gallery-1.jpg',
+    '/images/services/garage/04-gallery-2.jpg',
+    '/images/services/garage/05-gallery-3.jpg',
+    '/images/services/garage/06-gallery-4.jpg',
+  ]}
+/>

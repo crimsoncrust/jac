@@ -1,0 +1,85 @@
+---
+import ServiceDetailLayout from '../../components/ServiceDetailLayout.astro';
+
+const faqs = [
+  {
+    q: "Can I see exactly what my metallic floor will look like?",
+    a: "Metallic floors produce unique results in every installation — the movement, depth, and pattern cannot be exactly replicated or precisely pre-visualized. JAC can show examples of completed metallic floors to give a realistic reference for finish style."
+  },
+  {
+    q: "Are metallic floors practical for everyday use?",
+    a: "Metallic systems include durable topcoats and can handle everyday residential use. The suitability for your specific environment is part of the project evaluation."
+  },
+  {
+    q: "Can metallic systems be installed in garages?",
+    a: "Metallic systems are popular in collector garages, showroom-style spaces, and premium residential garages. Discuss the use case during the evaluation — it affects both system selection and topcoat choice."
+  },
+  {
+    q: "What colors and effects are available?",
+    a: "Metallic systems offer a range of base colors and can be blended to create various visual effects. Review available options with JAC during the quoting process."
+  },
+  {
+    q: "How do I care for a metallic floor?",
+    a: "Metallic floors with protective topcoats are cleaned with standard household cleaners and soft mops. Specific care instructions are provided at project completion."
+  },
+  {
+    q: "Is surface preparation still required for metallic floors?",
+    a: "Yes — surface preparation is required for every coating system, including metallic. Proper mechanical preparation ensures the system bonds correctly and performs long-term regardless of the aesthetic."
+  },
+];
+---
+
+<ServiceDetailLayout
+  title="Metallic Floors"
+  metaTitle="Metallic Epoxy Floors | JAC Surface Coatings — Godley & DFW, TX"
+  metaDesc="Premium metallic floor systems in Godley and greater DFW. Decorative finishes with depth and movement for garages, showrooms, and residential spaces. Get a free quote."
+  eyebrow="Metallic Floor Systems"
+  headline="Floors with depth,<br>movement, and character."
+  subhead="Premium decorative systems that create a distinctive visual result. Every metallic installation is unique — no two floors are exactly alike."
+  whoFor="Homeowners, collectors, and business owners looking for a premium decorative floor finish with visual depth and movement. Popular in collector garages, showroom spaces, personal workshops, residential interiors, and high-end commercial environments."
+  whatWeDo="JAC evaluates the space and concrete condition, discusses finish direction and color preferences, and installs the metallic system with the appropriate base and protective topcoat. The application process affects the movement and visual character of the finished floor — skilled installation is critical to the final result."
+  prepNote="Metallic systems require the same professional surface preparation as any other coating — the aesthetic quality of the finish depends on starting with properly prepared concrete. Imperfections or contaminants in the substrate can telegraph through the finished surface. JAC prepares the concrete mechanically before any metallic system is installed."
+  faqs={faqs}
+  heroImage="/images/services/metallic/01-hero.jpg"
+  prepImage="/images/services/metallic/02-surface-prep.jpg"
+  galleryImages={[
+    '/images/services/metallic/03-gallery-1.jpg',
+    '/images/services/metallic/04-gallery-2.jpg',
+    '/images/services/metallic/05-gallery-3.jpg',
+    '/images/services/metallic/06-gallery-4.jpg',
+  ]}
+>
+  <!-- Finish Options slot -->
+  <section slot="finish-options" class="section section-lighter" style="border-top: 1px solid var(--color-border-light);">
+    <div class="container">
+      <div class="section-header centered reveal">
+        <span class="text-eyebrow">Finish Options</span>
+        <h2>Visual direction — not an exact formula.</h2>
+        <p>Metallic floors are influenced by base color, application technique, and topcoat. The examples below represent general finish directions. Your actual floor will be a unique result.</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--space-md);">
+        {[
+          { name: 'Deep Charcoal', img: '/images/services/metallic/samples/01-deep-charcoal.jpg' },
+          { name: 'Bronze + Copper', img: '/images/services/metallic/samples/02-bronze-copper.jpg' },
+          { name: 'Pewter + Silver', img: '/images/services/metallic/samples/03-pewter-silver.jpg' },
+          { name: 'Custom Color Mix', img: '/images/services/metallic/samples/04-custom-mix.jpg' },
+        ].map(finish => (
+          <div class="reveal" style="background: var(--color-border-light); border-radius: var(--radius-md); overflow:hidden;">
+            <div style="height: 180px; background: #e0e0dc; position:relative;">
+              <img src={finish.img} alt={`${finish.name} metallic floor finish sample`} style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async" />
+            </div>
+            <div style="padding: 1rem;">
+              <div style="font-family: var(--font-head); font-weight: 700; font-size: 0.9rem; color: var(--color-text-dark);">{finish.name}</div>
+              <div style="font-size: 0.8rem; color: var(--color-text-dark-secondary); margin-top: 3px;">Sample finish direction</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <p style="text-align:center; margin-top: var(--space-lg); font-size: 0.85rem; color: var(--color-text-dark-secondary);">
+        Actual floor results vary — no two metallic floors are exactly alike.
+      </p>
+    </div>
+  </section>
+</ServiceDetailLayout>

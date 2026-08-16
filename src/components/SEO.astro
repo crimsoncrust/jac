@@ -1,0 +1,35 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  ogTitle: string;
+  ogDescription: string;
+  ogImage?: string;
+}
+
+const { title, description, canonical, ogTitle, ogDescription, ogImage } = Astro.props;
+const defaultOgImage = '/images/og/og-default.jpg';
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonical} />
+<meta property="og:title" content={ogTitle} />
+<meta property="og:description" content={ogDescription} />
+<meta property="og:image" content={ogImage ?? defaultOgImage} />
+<meta property="og:site_name" content="JAC Surface Coatings & Solutions" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={ogTitle} />
+<meta name="twitter:description" content={ogDescription} />
+<meta name="twitter:image" content={ogImage ?? defaultOgImage} />
+
+<!-- Geo / Local -->
+<meta name="geo.region" content="US-TX" />
+<meta name="geo.placename" content="Godley, Texas" />

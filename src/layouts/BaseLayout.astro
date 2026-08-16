@@ -1,0 +1,132 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import MobileBar from '../components/MobileBar.astro';
+import SEO from '../components/SEO.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  schema?: object | object[];
+  class?: string;
+}
+
+const {
+  title = 'JAC Surface Coatings & Solutions | DFW Concrete Coating Specialists',
+  description = 'Professional concrete floor coatings for garages, patios, shops, and commercial spaces. Serving Godley, Fort Worth, and greater DFW. Get a free quote today.',
+  canonical,
+  ogTitle,
+  ogDescription,
+  ogImage,
+  schema,
+} = Astro.props;
+
+const resolvedCanonical = canonical ?? Astro.url.href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <SEO
+      title={title}
+      description={description}
+      canonical={resolvedCanonical}
+      ogTitle={ogTitle ?? title}
+      ogDescription={ogDescription ?? description}
+      ogImage={ogImage}
+    />
+
+    {schema && (
+      <script type="application/ld+json" set:html={JSON.stringify(Array.isArray(schema) ? schema : [schema])} />
+    )}
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <MobileBar />
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+      <button class="lightbox__close" id="lightbox-close" aria-label="Close">&times;</button>
+      <img class="lightbox__img" id="lightbox-img" src="" alt="" />
+    </div>
+
+    <script>
+      // Scroll reveal
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+      // Lightbox
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+      const lightboxClose = document.getElementById('lightbox-close');
+
+      document.querySelectorAll('[data-lightbox]').forEach(el => {
+        el.addEventListener('click', () => {
+          const src = (el as HTMLElement).dataset.lightbox ?? '';
+          const alt = (el as HTMLElement).dataset.lightboxAlt ?? '';
+          if (lightboxImg) { lightboxImg.src = src; lightboxImg.alt = alt; }
+          lightbox?.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      lightboxClose?.addEventListener('click', closeLightbox);
+      lightbox?.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+      function closeLightbox() {
+        lightbox?.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      // FAQ accordion
+      document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const item = btn.closest('.faq-item');
+          const isOpen = item?.classList.contains('open');
+          document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+          if (!isOpen) item?.classList.add('open');
+        });
+      });
+
+      // Mobile nav
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileNav = document.getElementById('mobile-nav');
+      const mobileClose = document.getElementById('mobile-nav-close');
+
+      menuBtn?.addEventListener('click', () => {
+        mobileNav?.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+
+      mobileClose?.addEventListener('click', closeNav);
+
+      function closeNav() {
+        mobileNav?.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    </script>
+  </body>
+</html>

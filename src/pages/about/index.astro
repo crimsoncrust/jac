@@ -1,0 +1,176 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const values = [
+  {
+    title: 'Preparation first.',
+    desc: "Every project starts with an honest evaluation of the existing concrete. We don't skip this step — it determines whether the coating will perform the way it should.",
+  },
+  {
+    title: 'Straight answers.',
+    desc: "If a coating system isn't right for your space or concrete condition, we'll tell you. The goal is a floor that holds up, not a sale.",
+  },
+  {
+    title: 'Appropriate system selection.',
+    desc: "Different spaces need different systems. A collector garage, a pool deck, and a shop floor each have different requirements. We match the system to the environment.",
+  },
+  {
+    title: 'Local to DFW.',
+    desc: "JAC is based in Godley, Texas. We serve the communities around us — Johnson County, the southern DFW metroplex, and the greater Fort Worth area.",
+  },
+];
+---
+
+<BaseLayout
+  title="About JAC Surface Coatings | Godley & DFW Concrete Coating"
+  description="JAC Surface Coatings is a concrete coating company based in Godley, Texas. Professional surface preparation, straight answers, and floors built for real use across DFW."
+>
+
+  <section class="page-hero">
+    <div class="container page-hero__inner">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <span class="breadcrumb__item"><a href="/">Home</a></span>
+        <span class="breadcrumb__sep" aria-hidden="true">/</span>
+        <span class="breadcrumb__item" aria-current="page">About</span>
+      </nav>
+      <span class="text-eyebrow page-hero__eyebrow">About JAC</span>
+      <h1 class="page-hero__title">Professional preparation. Straight answers. Floors made for real life.</h1>
+      <p class="page-hero__sub">JAC Surface Coatings installs concrete coating systems for residential and commercial customers across Godley and the greater DFW area.</p>
+    </div>
+  </section>
+
+  <!-- About Story / Team -->
+  <section class="section section-light" aria-labelledby="about-story">
+    <div class="container">
+      <div class="about-split">
+        <div class="about-image-stack reveal">
+          <div class="about-image-main">
+            <img src="/images/about/01-team.jpg" alt="JAC Surface Coatings team" loading="lazy" decoding="async" />
+          </div>
+          <div class="about-image-accent" style="bottom:-1.5rem; right:-1.5rem;">
+            <img src="/images/about/02-equipment.jpg" alt="JAC surface preparation equipment" loading="lazy" decoding="async" />
+          </div>
+        </div>
+
+        <div class="reveal">
+          <span class="text-eyebrow">Who We Are</span>
+          <div class="gold-line" style="margin-top: 0.75rem;"></div>
+          <h2 id="about-story" style="margin-bottom: var(--space-sm);">Based in Godley. Built around preparation.</h2>
+          <p class="lead">
+            JAC Surface Coatings is a concrete coating company operating out of Godley, Texas. We install coating systems for garages, patios, shops, and commercial spaces across the DFW area.
+          </p>
+          <p style="margin-top: var(--space-sm);">
+            The work we do starts before any product is applied. Surface preparation — mechanical grinding, surface cleaning, defect evaluation — is what separates a coating that lasts from one that peels. That's where the time goes, and that's what customers are paying for when they hire JAC.
+          </p>
+          <p style="margin-top: var(--space-sm);">
+            We work with homeowners who want their garage done right, shop owners who need a floor that handles real use, and property owners looking for a clean, durable outdoor surface. The approach is the same regardless of the project: honest evaluation, appropriate system, proper installation.
+          </p>
+
+          <!-- Placeholder note — remove before launch -->
+          <p style="margin-top: var(--space-md); font-size: 0.8rem; color: #999; border: 1px dashed #ccc; padding: 0.75rem; border-radius: 4px;">
+            <strong>Content placeholder:</strong> Replace the above copy with JAC's actual story, background, and any specific details about the business, ownership, or approach. Remove this note before launch.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How We Approach a Project -->
+  <section class="section section-dark" aria-labelledby="approach-heading">
+    <div class="container">
+      <div class="section-header centered reveal">
+        <span class="text-eyebrow">How It Works</span>
+        <h2 id="approach-heading">From first contact to final walkthrough.</h2>
+        <p>Every JAC project follows the same process — regardless of size, system, or location.</p>
+      </div>
+
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="process-step__num">01</div>
+          <div class="process-step__content">
+            <h4>Tell Us About Your Space</h4>
+            <p>Submit basic information and photos through the quote form. JAC reviews the details before the site visit.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-step__num">02</div>
+          <div class="process-step__content">
+            <h4>Evaluate the Concrete</h4>
+            <p>JAC confirms the existing concrete condition, moisture situation, preparation requirements, and the most appropriate coating system.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-step__num">03</div>
+          <div class="process-step__content">
+            <h4>Prepare the Surface</h4>
+            <p>Diamond grinding, cleaning, and defect evaluation before any coating is applied. This is the most important part of the job.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-step__num">04</div>
+          <div class="process-step__content">
+            <h4>Install the System</h4>
+            <p>The specified coating system is installed according to the manufacturer's process and project requirements.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-step__num">05</div>
+          <div class="process-step__content">
+            <h4>Final Walkthrough</h4>
+            <p>Review the completed surface with the customer. Confirm the project is finished to specification.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section section-light" aria-labelledby="values-heading">
+    <div class="container">
+      <div class="about-split reveal">
+        <div>
+          <span class="text-eyebrow">How We Work</span>
+          <div class="gold-line" style="margin-top: 0.75rem;"></div>
+          <h2 id="values-heading" style="margin-bottom: var(--space-md);">What you can expect from JAC.</h2>
+
+          <div class="value-list">
+            {values.map(v => (
+              <div class="value-item">
+                <div class="value-item__dot"></div>
+                <div class="value-item__text">
+                  <h4>{v.title}</h4>
+                  <p>{v.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <div style="height: 420px; border-radius: var(--radius-md); position:relative; overflow:hidden;">
+            <img src="/images/about/03-installation.jpg" alt="JAC installation in progress" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-lg cta-section">
+    <div class="container">
+      <div class="cta-section__inner reveal">
+        <span class="text-eyebrow">Ready to Get Started?</span>
+        <h2 class="cta-section__title">Tell us about your project.</h2>
+        <p class="cta-section__desc">
+          Submit the details and photos through the quote form. JAC will review and follow up to discuss the space, surface condition, and coating options.
+        </p>
+        <div class="cta-section__actions">
+          <a href="/quote" class="btn btn-primary btn-lg">Get a Free Quote</a>
+          <span class="cta-section__divider">or</span>
+          <a href="tel:8179811400" class="btn btn-outline btn-lg">Call 817-981-1400</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

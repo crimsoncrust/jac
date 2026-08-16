@@ -1,0 +1,47 @@
+---
+import ServiceDetailLayout from '../../components/ServiceDetailLayout.astro';
+
+const faqs = [
+  {
+    q: "Can outdoor coatings handle Texas heat and UV exposure?",
+    a: "System selection matters significantly for outdoor applications. JAC specifies coatings appropriate for outdoor use in Texas — direct sun, heat expansion, and UV exposure are part of the evaluation."
+  },
+  {
+    q: "Will the surface be slippery when wet?",
+    a: "Traction is a priority for pool decks and outdoor surfaces. Non-slip additives or textured finishes can be incorporated based on your specific surface and safety requirements."
+  },
+  {
+    q: "Can you coat around a pool?",
+    a: "Pool deck applications are possible and common. The evaluation will assess drainage, exposure to pool chemicals, and the appropriate system for that environment."
+  },
+  {
+    q: "What does the existing concrete need to look like?",
+    a: "Existing concrete condition is evaluated during the quoting process. Surface texture, age, previous sealers, and visible damage all factor into the preparation and system selection."
+  },
+  {
+    q: "How do outdoor coatings perform in rain?",
+    a: "Properly installed outdoor coatings handle rain well. Drainage and standing water situations are part of the evaluation when specifying the system."
+  },
+];
+---
+
+<ServiceDetailLayout
+  title="Patios + Pool Decks"
+  metaTitle="Patio & Pool Deck Coatings | JAC Surface Coatings — DFW, TX"
+  metaDesc="Outdoor concrete coating systems for patios and pool decks in Godley and greater DFW. Durable, slip-resistant finishes built for Texas outdoor living. Get a free quote."
+  eyebrow="Outdoor Surface Systems"
+  headline="Outdoor surfaces built for<br>Texas conditions."
+  subhead="Coating systems for patios, pool decks, and outdoor living spaces designed for durability, traction, and appearance in direct sun, heat, and rain."
+  whoFor="Homeowners looking to improve the look and durability of existing patio concrete or pool deck surfaces. Appropriate for covered and uncovered patios, pool surrounds, walkways, and other outdoor concrete areas exposed to sun, weather, and foot traffic."
+  whatWeDo="JAC evaluates the outdoor concrete surface, assesses drainage, existing sealer or coatings, and selects an appropriate system for the exposure and use. Surface preparation is performed with equipment suited to the existing concrete condition before the coating system is installed."
+  prepNote="Outdoor concrete expands, contracts, and faces UV exposure that indoor surfaces don't. Coatings applied without appropriate surface preparation or without accounting for these conditions will fail faster. JAC's preparation process addresses these factors before any material is installed."
+  faqs={faqs}
+  heroImage="/images/services/patios/01-hero.jpg"
+  prepImage="/images/services/patios/02-surface-prep.jpg"
+  galleryImages={[
+    '/images/services/patios/03-gallery-1.jpg',
+    '/images/services/patios/04-gallery-2.jpg',
+    '/images/services/patios/05-gallery-3.jpg',
+    '/images/services/patios/06-gallery-4.jpg',
+  ]}
+/>

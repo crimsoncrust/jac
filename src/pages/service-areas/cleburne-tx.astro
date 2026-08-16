@@ -1,0 +1,44 @@
+---
+import LocationPageLayout from '../../components/LocationPageLayout.astro';
+
+const faqs = [
+  {
+    q: "Does JAC serve the Cleburne area?",
+    a: "Yes. JAC serves Cleburne and the surrounding Johnson County communities as part of its core service area."
+  },
+  {
+    q: "What surfaces do you coat in Cleburne?",
+    a: "Garage floors, shop floors, patios, pool decks, and commercial spaces for Cleburne-area residential and commercial customers."
+  },
+  {
+    q: "How do I get a quote for a Cleburne project?",
+    a: "Submit the quote form on this site with details and photos of your space. JAC will follow up to discuss the project."
+  },
+  {
+    q: "Can you coat a shop floor near Cleburne?",
+    a: "Shop and commercial floor coatings are a common project type in the Cleburne area. Submit the quote form or call to discuss your specific situation."
+  },
+];
+---
+
+<LocationPageLayout
+  city="Cleburne"
+  state="Texas"
+  slug="cleburne-tx"
+  metaTitle="Concrete Floor Coatings in Cleburne, TX | JAC Surface Coatings"
+  metaDesc="Professional concrete coating services in Cleburne, Texas. Garage floors, shop floors, patios, and commercial coatings. Local DFW company — free quote."
+  intro="JAC serves Cleburne and Johnson County with professional concrete floor coatings for garages, shops, patios, and commercial spaces."
+  bodyContent="<p>Cleburne is part of JAC's core service area in Johnson County. We install concrete coating systems for Cleburne-area homeowners, shop owners, and commercial customers who want a durable, professional floor without the hassle of chasing down a contractor from across the metroplex.</p><p style='margin-top: 1rem;'>Cleburne-area projects commonly include residential garage floors, personal workshops, small commercial spaces, and outdoor patio surfaces. JAC evaluates each project and selects the appropriate system before any installation begins.</p>"
+  nearbyAreas={[
+    { name: 'Godley, TX', slug: 'godley-tx' },
+    { name: 'Burleson, TX', slug: 'burleson-tx' },
+    { name: 'Granbury, TX', slug: 'granbury-tx' },
+    { name: 'Fort Worth, TX', slug: 'fort-worth-tx' },
+  ]}
+  faqs={faqs}
+  localImages={[
+    '/images/areas/cleburne-tx/01-project.jpg',
+    '/images/areas/cleburne-tx/02-project.jpg',
+    '/images/areas/cleburne-tx/03-project.jpg',
+  ]}
+/>

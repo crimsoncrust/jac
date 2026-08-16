@@ -1,0 +1,40 @@
+---
+import LocationPageLayout from '../../components/LocationPageLayout.astro';
+
+const faqs = [
+  {
+    q: "Do you serve the Granbury and Hood County area?",
+    a: "Yes. JAC serves Granbury and Hood County for residential and commercial concrete coating projects."
+  },
+  {
+    q: "What surfaces do you coat in Granbury?",
+    a: "Garage floors, shop floors, patios, pool decks, and commercial floor coatings — the same systems available throughout the JAC service area."
+  },
+  {
+    q: "Can you coat the floors in a lake-area property near Granbury?",
+    a: "Properties near Lake Granbury are a common request. The evaluation process is the same — the surface condition and intended use guide the system selection."
+  },
+];
+---
+
+<LocationPageLayout
+  city="Granbury"
+  state="Texas"
+  slug="granbury-tx"
+  metaTitle="Concrete Floor Coatings in Granbury, TX | JAC Surface Coatings"
+  metaDesc="Professional concrete coating services in Granbury, Texas. Garage floors, patios, shops, and pool decks for Hood County residential and commercial projects. Free quote."
+  intro="JAC serves Granbury and Hood County with concrete coating systems for garages, patios, shops, pool decks, and commercial spaces."
+  bodyContent="<p>Granbury and Hood County are part of JAC's service area. We work with residential homeowners, lake-area property owners, and commercial customers in the Granbury area who want a properly installed coating system — not a fast flip with inadequate preparation.</p><p style='margin-top: 1rem;'>Properties near Lake Granbury often include patios, pool decks, boat storage areas, and garage slabs that benefit from durable, water-resistant surface coatings. JAC evaluates each project to recommend the appropriate system for the environment and use.</p>"
+  nearbyAreas={[
+    { name: 'Godley, TX', slug: 'godley-tx' },
+    { name: 'Cleburne, TX', slug: 'cleburne-tx' },
+    { name: 'Fort Worth, TX', slug: 'fort-worth-tx' },
+    { name: 'Burleson, TX', slug: 'burleson-tx' },
+  ]}
+  faqs={faqs}
+  localImages={[
+    '/images/areas/granbury-tx/01-project.jpg',
+    '/images/areas/granbury-tx/02-project.jpg',
+    '/images/areas/granbury-tx/03-project.jpg',
+  ]}
+/>

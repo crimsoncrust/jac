@@ -1,0 +1,44 @@
+---
+import LocationPageLayout from '../../components/LocationPageLayout.astro';
+
+const faqs = [
+  {
+    q: "Does JAC serve Fort Worth?",
+    a: "Yes. JAC serves Fort Worth and the greater Tarrant County area for residential and commercial concrete coating projects."
+  },
+  {
+    q: "Do you install metallic floors in Fort Worth?",
+    a: "Metallic systems are available throughout the JAC service area including Fort Worth. Submit the quote form to discuss your project."
+  },
+  {
+    q: "Can you coat commercial spaces in Fort Worth?",
+    a: "Commercial floor coatings — shops, service bays, warehouses, commercial workspaces — are available in Fort Worth. The evaluation and preparation process is the same as any other project."
+  },
+  {
+    q: "What parts of Fort Worth do you serve?",
+    a: "JAC serves the Fort Worth metro area. If you're in Tarrant County or surrounding communities and aren't sure about coverage, call or text 817-981-1400 to confirm."
+  },
+];
+---
+
+<LocationPageLayout
+  city="Fort Worth"
+  state="Texas"
+  slug="fort-worth-tx"
+  metaTitle="Concrete Floor Coatings in Fort Worth, TX | JAC Surface Coatings"
+  metaDesc="Professional concrete coating services in Fort Worth, Texas. Garage floors, metallic systems, commercial coatings — installed with proper surface preparation. Free quote."
+  intro="JAC serves Fort Worth and the greater Tarrant County area with professional concrete floor coatings for residential garages, commercial spaces, shops, and more."
+  bodyContent="<p>Fort Worth is one of JAC's largest service markets. We work with Fort Worth homeowners who want a properly installed garage floor, shop owners who need a durable commercial coating, and property owners interested in decorative metallic systems for premium residential spaces.</p><p style='margin-top: 1rem;'>The Fort Worth market includes a wide range of property types — newer suburban homes with standard garage slabs, older properties with concrete that requires more preparation attention, commercial buildings with heavy-use floors, and high-end residential spaces where finish quality matters. JAC's evaluation process accounts for each of these situations.</p><p style='margin-top: 1rem;'>If you're in Fort Worth or surrounding Tarrant County communities, contact JAC to discuss your project and confirm service availability for your specific address.</p>"
+  nearbyAreas={[
+    { name: 'Godley, TX', slug: 'godley-tx' },
+    { name: 'Burleson, TX', slug: 'burleson-tx' },
+    { name: 'Cleburne, TX', slug: 'cleburne-tx' },
+    { name: 'Granbury, TX', slug: 'granbury-tx' },
+  ]}
+  faqs={faqs}
+  localImages={[
+    '/images/areas/fort-worth-tx/01-project.jpg',
+    '/images/areas/fort-worth-tx/02-project.jpg',
+    '/images/areas/fort-worth-tx/03-project.jpg',
+  ]}
+/>

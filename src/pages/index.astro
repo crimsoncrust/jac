@@ -1,0 +1,503 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "JAC Surface Coatings & Solutions",
+  "description": "Professional concrete floor coatings for garages, patios, shops, and commercial spaces in Godley, Fort Worth, and greater DFW.",
+  "telephone": "+18179811400",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Godley",
+    "addressRegion": "TX",
+    "addressCountry": "US"
+  },
+  "areaServed": [
+    "Godley, TX", "Cleburne, TX", "Burleson, TX", "Granbury, TX", "Fort Worth, TX"
+  ],
+  "url": "https://jacsurfacecoatings.com",
+  "priceRange": "$$",
+  "serviceType": [
+    "Concrete Coating", "Epoxy Floor Coating", "Garage Floor Coating",
+    "Metallic Epoxy Floors", "Patio Coating", "Commercial Floor Coating"
+  ]
+};
+---
+
+<BaseLayout
+  title="JAC Surface Coatings & Solutions | DFW Concrete Coating Specialists"
+  description="Professional garage, patio, and commercial concrete coatings in Godley and greater DFW. Flake, metallic, and solid systems installed with professional surface preparation. Get a free quote."
+  schema={localBusinessSchema}
+>
+
+  <!-- ================================================
+       HERO
+       ================================================ -->
+  <section class="hero" aria-labelledby="hero-headline">
+    <div class="hero__content">
+      <span class="text-eyebrow hero__eyebrow">DFW Concrete Coating Specialists</span>
+      <h1 class="hero__headline" id="hero-headline">
+        Floors built to look<br><em>better</em> — and last longer.
+      </h1>
+      <p class="hero__sub">
+        Garage floors, patios, shops, and commercial coating systems installed with professional surface preparation and attention to detail.
+      </p>
+      <div class="hero__actions">
+        <a href="/quote" class="btn btn-primary btn-lg">Get a Free Quote</a>
+        <a href="/gallery" class="btn btn-outline btn-lg">View Projects</a>
+      </div>
+      <div class="hero__locations">
+        <span class="hero__location-item active">Godley</span>
+        <span class="hero__location-item">&bull;</span>
+        <span class="hero__location-item">Cleburne</span>
+        <span class="hero__location-item">&bull;</span>
+        <span class="hero__location-item">Burleson</span>
+        <span class="hero__location-item">&bull;</span>
+        <span class="hero__location-item">Fort Worth</span>
+        <span class="hero__location-item">&bull;</span>
+        <span class="hero__location-item">DFW</span>
+      </div>
+    </div>
+    <div class="hero__image">
+      <img src="/images/hero/01-hero-home.jpg" alt="Finished polished concrete garage floor" loading="eager" decoding="async" />
+    </div>
+  </section>
+
+  <!-- ================================================
+       TRUST STRIP
+       ================================================ -->
+  <section class="trust-strip" aria-label="Why JAC">
+    <div class="container">
+      <div class="trust-strip__inner">
+        <div class="trust-item">
+          <svg class="trust-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <span class="trust-item__text">Professional<br>Surface Preparation</span>
+        </div>
+        <div class="trust-item">
+          <svg class="trust-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+            <path d="M8 21h8M12 17v4"/>
+          </svg>
+          <span class="trust-item__text">Residential<br>+ Commercial</span>
+        </div>
+        <div class="trust-item">
+          <svg class="trust-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          <span class="trust-item__text">Local DFW<br>Service</span>
+        </div>
+        <div class="trust-item">
+          <svg class="trust-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+          <span class="trust-item__text">Built for<br>Real-World Use</span>
+        </div>
+        <div class="trust-item">
+          <svg class="trust-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+            <path d="M9 11l3 3L22 4"/>
+            <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+          </svg>
+          <span class="trust-item__text">Straight Answers.<br>No Pressure.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       SERVICES SECTION
+       ================================================ -->
+  <section class="section section-lg section-dark" aria-labelledby="services-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="text-eyebrow">Surfacing Systems for Every Space</span>
+        <h2 id="services-heading">Choose the right system —<br>not just a color.</h2>
+        <p class="lead">Every coating system starts with understanding the space, the concrete, and how the floor will actually be used. JAC installs the appropriate system for each project — not the fastest one.</p>
+      </div>
+
+      <div class="services-grid">
+        <!-- Garage Floors -->
+        <article class="service-card reveal">
+          <div class="service-card__image">
+            <img src="/images/services/garage/01-hero.jpg" alt="Finished garage floor coating" loading="lazy" decoding="async" />
+          </div>
+          <div class="service-card__body">
+            <h3 class="service-card__name">Garage Floors</h3>
+            <p class="service-card__desc">Flake and coating systems designed for everyday traffic, vehicle tires, durability, and easy cleanup. Built to handle real garage use.</p>
+            <div class="service-card__cta">
+              <a href="/services/garage-floors" class="btn btn-ghost">Explore Garage Floors</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Patios + Pool Decks -->
+        <article class="service-card reveal">
+          <div class="service-card__image">
+            <img src="/images/services/patios/01-hero.jpg" alt="Finished patio and pool deck coating" loading="lazy" decoding="async" />
+          </div>
+          <div class="service-card__body">
+            <h3 class="service-card__name">Patios + Pool Decks</h3>
+            <p class="service-card__desc">Outdoor surface systems focused on durability, appearance, traction, and outdoor living. Sun, water, and foot traffic ready.</p>
+            <div class="service-card__cta">
+              <a href="/services/patios-pool-decks" class="btn btn-ghost">Explore Outdoor Coatings</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Commercial + Shops -->
+        <article class="service-card reveal">
+          <div class="service-card__image">
+            <img src="/images/services/commercial/01-hero.jpg" alt="Finished commercial shop floor coating" loading="lazy" decoding="async" />
+          </div>
+          <div class="service-card__body">
+            <h3 class="service-card__name">Commercial + Shops</h3>
+            <p class="service-card__desc">Durable floor coating solutions for service bays, shops, workspaces, facilities, and commercial environments that see heavy daily use.</p>
+            <div class="service-card__cta">
+              <a href="/services/commercial-floor-coatings" class="btn btn-ghost">Explore Commercial</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Metallic Systems -->
+        <article class="service-card reveal">
+          <div class="service-card__image">
+            <img src="/images/services/metallic/01-hero.jpg" alt="Finished metallic epoxy floor" loading="lazy" decoding="async" />
+          </div>
+          <div class="service-card__body">
+            <h3 class="service-card__name">Metallic Systems</h3>
+            <p class="service-card__desc">Premium decorative floors with depth, movement, and distinctive finishes. Each metallic floor is a unique result — no two are identical.</p>
+            <div class="service-card__cta">
+              <a href="/services/metallic-floors" class="btn btn-ghost">Explore Metallic Floors</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div style="margin-top: var(--space-xl); text-align: center;">
+        <a href="/services" class="btn btn-outline">View All Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       WHY PREPARATION MATTERS
+       ================================================ -->
+  <section class="section section-lg section-light" aria-labelledby="prep-heading">
+    <div class="container">
+      <div class="why-prep">
+        <div class="why-prep__image reveal">
+          <img src="/images/prep/01-grinding.jpg" alt="Diamond grinding equipment preparing a concrete surface" loading="lazy" decoding="async" />
+        </div>
+        <div class="reveal">
+          <span class="text-eyebrow">Why Preparation Matters</span>
+          <div class="gold-line" style="margin-top: 0.75rem;"></div>
+          <h2 id="prep-heading">A great floor starts before the coating goes down.</h2>
+          <p class="lead" style="margin-top: var(--space-sm); margin-bottom: var(--space-md);">
+            The coating is only as good as the surface it bonds to. Skipping or rushing preparation is the primary reason coatings fail prematurely.
+          </p>
+
+          <div class="why-prep__steps">
+            <div class="prep-step">
+              <span class="prep-step__num">01</span>
+              <div class="prep-step__text">
+                <h4>Surface Evaluation</h4>
+                <p>Assess the existing concrete condition, moisture, and any previous coatings or contaminants before selecting a system.</p>
+              </div>
+            </div>
+            <div class="prep-step">
+              <span class="prep-step__num">02</span>
+              <div class="prep-step__text">
+                <h4>Mechanical Preparation</h4>
+                <p>Professional diamond grinding opens the concrete profile so the coating forms a proper mechanical bond.</p>
+              </div>
+            </div>
+            <div class="prep-step">
+              <span class="prep-step__num">03</span>
+              <div class="prep-step__text">
+                <h4>Crack + Defect Assessment</h4>
+                <p>Identify and address cracks, spalling, or damage before any coating is applied.</p>
+              </div>
+            </div>
+            <div class="prep-step">
+              <span class="prep-step__num">04</span>
+              <div class="prep-step__text">
+                <h4>Proper System Selection</h4>
+                <p>Match the coating system to the environment, substrate condition, and intended use — not just the customer's preferred color.</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: var(--space-lg);">
+            <a href="/about" class="btn btn-outline-dark">See Our Process</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       FEATURED PROJECT
+       ================================================ -->
+  <section class="section section-lg section-dark" aria-labelledby="featured-heading">
+    <div class="container">
+      <div class="section-header centered reveal">
+        <span class="text-eyebrow">Featured Project</span>
+        <h2 id="featured-heading">Finished work speaks for itself.</h2>
+      </div>
+
+      <div class="featured-project reveal">
+        <div class="featured-project__image">
+          <img src="/images/projects/01-modern-garage/01-hero.jpg" alt="Featured project: finished garage floor" loading="lazy" decoding="async" />
+        </div>
+        <div class="featured-project__info">
+          <div class="featured-project__label">
+            <span class="featured-project__badge">Featured Project</span>
+          </div>
+          <h3 class="featured-project__title">[Project Name]</h3>
+          <div class="featured-project__location">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            [City, Texas] — Replace with actual project location
+          </div>
+
+          <div class="featured-project__meta">
+            <div class="meta-item">
+              <div class="meta-item__label">System</div>
+              <div class="meta-item__value">[Coating System] — Replace with project details</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-item__label">Space</div>
+              <div class="meta-item__value">[Space Type] — Replace with project type</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-item__label">Finish</div>
+              <div class="meta-item__value">[Finish Description]</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-item__label">Location</div>
+              <div class="meta-item__value">Greater DFW, Texas</div>
+            </div>
+          </div>
+
+          <p class="featured-project__desc">
+            Add a short description of the project here — what the customer needed, what was done, and what the result looks like. Keep it honest and specific.
+          </p>
+
+          <div style="display:flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="/quote" class="btn btn-primary">Quote This Floor</a>
+            <a href="/gallery" class="btn btn-ghost">View All Projects</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       BEFORE + AFTER
+       ================================================ -->
+  <section class="section section-surface" aria-labelledby="ba-heading">
+    <div class="container">
+      <div class="section-header centered reveal">
+        <span class="text-eyebrow">Transformations</span>
+        <h2 id="ba-heading">See the transformation.</h2>
+        <p>Drag the slider to compare the original concrete with the completed surface.</p>
+      </div>
+
+      <div class="before-after-slider reveal" id="ba-slider" aria-label="Before and after comparison">
+        <!-- After image (full width background) -->
+        <div class="before-after-slider__after">
+          <img src="/images/projects/01-modern-garage/03-after.jpg" alt="After: finished coated floor" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async" />
+        </div>
+        <!-- Before image (clipped) -->
+        <div class="before-after-slider__before" id="ba-before">
+          <img src="/images/projects/01-modern-garage/02-before.jpg" alt="Before: original concrete surface" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async" />
+        </div>
+        <!-- Handle -->
+        <div class="before-after-slider__handle" id="ba-handle">
+          <div class="before-after-slider__btn" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5">
+              <polyline points="15 18 9 12 15 6"/>
+              <polyline points="9 18 15 12 9 6" style="transform:translateX(6px)"/>
+            </svg>
+          </div>
+        </div>
+        <div class="before-after-slider__labels">
+          <span class="ba-label">Before</span>
+          <span class="ba-label">After</span>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top: var(--space-lg);">
+        <a href="/gallery" class="btn btn-outline">View All Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       PROCESS
+       ================================================ -->
+  <section class="section section-lg section-dark" aria-labelledby="process-heading">
+    <div class="container">
+      <div class="section-header centered reveal">
+        <span class="text-eyebrow">The Process</span>
+        <h2 id="process-heading">Straight answers. Professional preparation.<br>A better finished floor.</h2>
+      </div>
+
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="process-step__num">01</div>
+          <div class="process-step__content">
+            <h4>Tell Us About Your Space</h4>
+            <p>Provide basic information about the area, approximate size, goals, and photos of the existing surface.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-step__num">02</div>
+          <div class="process-step__content">
+            <h4>Evaluate the Project</h4>
+            <p>JAC confirms the space, concrete condition, preparation requirements, and appropriate coating system for your situation.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-step__num">03</div>
+          <div class="process-step__content">
+            <h4>Prepare the Surface</h4>
+            <p>Professional mechanical preparation ensures the coating bonds correctly and performs the way it should.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-step__num">04</div>
+          <div class="process-step__content">
+            <h4>Install the System</h4>
+            <p>The coating system is installed to specification. No shortcuts on materials or application.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-step__num">05</div>
+          <div class="process-step__content">
+            <h4>Final Walkthrough</h4>
+            <p>Review the completed surface with the customer and confirm the project is finished correctly.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top: var(--space-xl);">
+        <a href="/quote" class="btn btn-primary btn-lg">Start Your Project</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       REVIEWS
+       ================================================ -->
+  <section class="section section-light" aria-labelledby="reviews-heading">
+    <div class="container">
+      <div class="section-header centered reveal">
+        <span class="text-eyebrow">Customer Reviews</span>
+        <h2 id="reviews-heading">Built for real life.<br>Backed by real customers.</h2>
+      </div>
+
+      <div class="reviews-grid">
+        <!-- Placeholder review cards — replace with actual testimonials -->
+        {[1, 2, 3].map(i => (
+          <div class="review-card reveal">
+            <div class="review-card__stars" aria-label="5 stars">★★★★★</div>
+            <p class="review-card__text">"[Customer review placeholder — replace with an authentic testimonial from a JAC customer. Do not use this placeholder as a real review.]"</p>
+            <div class="review-card__author">
+              <span class="review-card__name">[Customer Name]</span>
+              <span class="review-card__detail">[City, TX] — [Project Type]</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <p style="text-align:center; margin-top: var(--space-lg); font-size: 0.85rem; color: var(--color-text-dark-secondary);">
+        Reviews shown above are placeholders. Replace with verified customer testimonials before launch.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================================================
+       LOCAL SERVICE AREAS
+       ================================================ -->
+  <section class="section section-dark" aria-labelledby="areas-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="text-eyebrow">Service Coverage</span>
+        <h2 id="areas-heading">Local service across Godley<br>and greater DFW.</h2>
+        <p>JAC serves residential and commercial customers across Johnson County and the greater DFW metroplex. Not sure if we cover your area? Give us a call.</p>
+      </div>
+
+      <div class="service-areas-grid">
+        {[
+          { name: 'Godley', state: 'Texas', href: '/service-areas/godley-tx' },
+          { name: 'Cleburne', state: 'Texas', href: '/service-areas/cleburne-tx' },
+          { name: 'Burleson', state: 'Texas', href: '/service-areas/burleson-tx' },
+          { name: 'Granbury', state: 'Texas', href: '/service-areas/granbury-tx' },
+          { name: 'Fort Worth', state: 'Texas', href: '/service-areas/fort-worth-tx' },
+          { name: 'Greater DFW', state: 'Texas', href: '/service-areas' },
+        ].map(area => (
+          <a href={area.href} class="area-card reveal">
+            <div class="area-card__name">{area.name}</div>
+            <div class="area-card__state">{area.state}</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       FINAL CTA
+       ================================================ -->
+  <section class="section-lg cta-section" aria-labelledby="cta-heading">
+    <div class="container">
+      <div class="cta-section__inner reveal">
+        <span class="text-eyebrow">Ready to Transform Your Concrete?</span>
+        <h2 class="cta-section__title" id="cta-heading">Tell us about your project.</h2>
+        <p class="cta-section__desc">
+          Send us a few details and photos. JAC will follow up to discuss your space, preparation needs, and coating options — no pressure, no obligation.
+        </p>
+        <div class="cta-section__actions">
+          <a href="/quote" class="btn btn-primary btn-lg">Get a Free Quote</a>
+          <span class="cta-section__divider">or</span>
+          <a href="tel:8179811400" class="btn btn-outline btn-lg">Call 817-981-1400</a>
+          <a href="sms:8179811400" class="btn btn-ghost">Text JAC →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<script>
+  // Before/After Slider
+  const slider = document.getElementById('ba-slider');
+  const before = document.getElementById('ba-before');
+  const handle = document.getElementById('ba-handle');
+
+  if (slider && before && handle) {
+    let isDragging = false;
+
+    function setPosition(x: number) {
+      const rect = slider.getBoundingClientRect();
+      let pct = Math.max(0, Math.min(100, ((x - rect.left) / rect.width) * 100));
+      before.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+      handle.style.left = `${pct}%`;
+    }
+
+    slider.addEventListener('mousedown', (e) => { isDragging = true; setPosition(e.clientX); });
+    slider.addEventListener('touchstart', (e) => { isDragging = true; setPosition(e.touches[0].clientX); }, { passive: true });
+
+    window.addEventListener('mousemove', (e) => { if (isDragging) setPosition(e.clientX); });
+    window.addEventListener('touchmove', (e) => { if (isDragging) setPosition(e.touches[0].clientX); }, { passive: true });
+
+    window.addEventListener('mouseup', () => { isDragging = false; });
+    window.addEventListener('touchend', () => { isDragging = false; });
+  }
+</script>
