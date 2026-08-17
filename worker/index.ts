@@ -1,4 +1,9 @@
+interface Fetcher {
+  fetch(request: Request): Promise<Response>;
+}
+
 interface Env {
+  ASSETS: Fetcher;
   RESEND_API_KEY: string;
   LEAD_TO_EMAIL: string;
   LEAD_FROM_EMAIL: string;
@@ -34,9 +39,7 @@ function json(data: unknown, status: number): Response {
   });
 }
 
-export const onRequestPost = async (context: { request: Request; env: Env }) => {
-  const { request, env } = context;
-
+async function handleQuote(request: Request, env: Env): Promise<Response> {
   let body: QuotePayload;
   try {
     body = await request.json();
@@ -113,4 +116,16 @@ ${rows.map(([label, value]) => `<tr><td><strong>${escapeHtml(label)}</strong></t
   }
 
   return json({ ok: true }, 200);
+}
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const url = new URL(request.url);
+
+    if (url.pathname === '/api/quote' && request.method === 'POST') {
+      return handleQuote(request, env);
+    }
+
+    return env.ASSETS.fetch(request);
+  },
 };
