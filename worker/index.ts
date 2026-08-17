@@ -111,8 +111,9 @@ ${rows.map(([label, value]) => `<tr><td><strong>${escapeHtml(label)}</strong></t
   }
 
   if (!resendRes.ok) {
-    console.error('Resend error:', await resendRes.text());
-    return json({ ok: false, error: 'Failed to send notification email.' }, 502);
+    const errText = await resendRes.text();
+    console.error('Resend error:', errText);
+    return json({ ok: false, error: 'Failed to send notification email.', debug: { status: resendRes.status, body: errText, keyLen: (env.RESEND_API_KEY ?? '').length, from: env.LEAD_FROM_EMAIL ?? null, to: env.LEAD_TO_EMAIL ?? null } }, 502);
   }
 
   return json({ ok: true }, 200);
