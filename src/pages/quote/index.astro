@@ -186,6 +186,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           <p class="wizard-step__sub">JAC will review your project details and follow up to discuss the surface, preparation, and options.</p>
 
           <form id="quote-form" novalidate>
+            <div style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true">
+              <label for="contact-website">Leave this field blank</label>
+              <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off" />
+            </div>
+
             <div class="form-grid-2">
               <div class="form-group">
                 <label class="form-label" for="contact-name">Name <span aria-hidden="true">*</span></label>
@@ -225,6 +230,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <p class="form-consent">
               By submitting this form, you agree that JAC Surface Coatings may contact you by phone, text, or email to discuss your project. Message and data rates may apply for text messages.
             </p>
+
+            <p class="form-error" id="quote-error" style="display:none; color:#E0453D; font-size:0.875rem; margin-top:0.75rem;" role="alert"></p>
 
             <div class="wizard-nav" style="margin-top: var(--space-md);">
               <button class="btn btn-ghost" type="button" id="step5-back">← Back</button>
@@ -389,13 +396,23 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   // Step 5 — submit
   document.getElementById('step5-back')?.addEventListener('click', () => goToStep(4));
 
-  document.getElementById('quote-form')?.addEventListener('submit', (e) => {
+  document.getElementById('quote-form')?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const name = (document.getElementById('contact-name') as HTMLInputElement).value.trim();
     const phone = (document.getElementById('contact-phone') as HTMLInputElement).value.trim();
+    const errorEl = document.getElementById('quote-error');
+    const submitBtn = document.getElementById('quote-submit') as HTMLButtonElement;
+
+    if (errorEl) {
+      errorEl.style.display = 'none';
+      errorEl.textContent = '';
+    }
 
     if (!name || !phone) {
-      alert('Please provide your name and phone number.');
+      if (errorEl) {
+        errorEl.textContent = 'Please provide your name and phone number.';
+        errorEl.style.display = 'block';
+      }
       return;
     }
 
@@ -403,17 +420,35 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     formData.phone = phone;
     formData.email = (document.getElementById('contact-email') as HTMLInputElement).value.trim();
     formData.zip = (document.getElementById('contact-zip') as HTMLInputElement).value.trim();
+    formData.contact_method = (document.getElementById('contact-method') as HTMLSelectElement).value;
     formData.message = (document.getElementById('contact-message') as HTMLTextAreaElement).value.trim();
+    formData.website = (document.getElementById('contact-website') as HTMLInputElement).value;
 
-    // Show success screen — wire up form submission to your backend/service before launch
-    const wizard = document.getElementById('quote-wizard');
-    const success = document.getElementById('success-screen');
-    if (wizard) wizard.style.display = 'none';
-    if (success) success.classList.add('active');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting…';
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    try {
+      const res = await fetch('/api/quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
-    // TODO: Submit formData to your form handler (Netlify, Formspree, custom endpoint)
-    console.log('Quote submission:', formData);
+      if (!res.ok) throw new Error('Request failed');
+
+      const wizard = document.getElementById('quote-wizard');
+      const success = document.getElementById('success-screen');
+      if (wizard) wizard.style.display = 'none';
+      if (success) success.classList.add('active');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (err) {
+      if (errorEl) {
+        errorEl.textContent = 'Something went wrong sending your request — please call or text us at 817-981-1400 instead.';
+        errorEl.style.display = 'block';
+      }
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Quote Request';
+    }
   });
 </script>
