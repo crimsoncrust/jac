@@ -6,3 +6,7 @@ compatibility_flags = ["global_fetch_strictly_public"]
 [assets]
 directory = "./dist"
 binding = "ASSETS"
+
+[vars]
+LEAD_TO_EMAIL = "sales@jacsurfacecoatingsandsolutions.com"
+LEAD_FROM_EMAIL = "leads@jacsurfacecoatingsandsolutions.com"
